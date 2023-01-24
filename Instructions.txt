@@ -1,0 +1,7 @@
+While the application is running any messages from allowed phonenumbers that start with "." are read and interpreted by the application as commands.
+Any message from a phone number that has not sent a command can start playing by sending any message that begins with ".".
+
+Currently allowed phone numbers:
+Starts with {"+3584", "04"}
+
+
