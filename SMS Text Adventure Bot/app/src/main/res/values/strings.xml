@@ -1,0 +1,16 @@
+<!-- Some strings are stored in Constants.class -file -->
+<resources>
+    <string name="app_name">Text Adventure bot</string>
+
+    <string name="unknown_intent">unknown intent action</string>
+    <string name="INVALID_COMMAND">The Command you\'ve sent is invalid.\n
+        Start your command with a period and try again\.
+        To see all possible commands type ".commands"</string>
+    <string name="NEW_PLAYER_GREET_MESSAGE">SMS Text-Adventure Messenger \n
+         To operate this program start your every command with a period \n
+         All messages that do not start with a period will be ignored by the program</string>
+    <string name="SELECT_GAME_TEXT">TO SELECT A GAME TO PLAY FROM THE LIST
+    SEND THE CORRESPONDING COMMAND AS A MESSAGE.
+    </string>
+    <string name="toast_message">Made by Max Väistö</string>
+</resources>
