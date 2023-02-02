@@ -15,7 +15,9 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
+/*
+    This class is used to retrieve the story text (title,choices,go to pages and page body)
+ */
 public class LoadAdventureData {
 
     //Loads the actual text adventure text contained within the assets directory
@@ -371,6 +373,8 @@ public class LoadAdventureData {
 
         return "TITLE NOT FOUND";
     }
+
+    //Used to get the JSON file with the filepath
     public String loadJSONFromAsset(String filepath) {
         String json = null;
         try {

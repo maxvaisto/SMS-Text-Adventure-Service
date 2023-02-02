@@ -19,7 +19,8 @@ import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 
 import java.util.List;
-
+//SmsReceiver is used to receive and check all of the user messages to see
+// if they contain the components to be interpreted as a potential message
 public class SmsReceiver extends BroadcastReceiver {
 
     private WorkManager mWorkManager;
@@ -33,13 +34,19 @@ public class SmsReceiver extends BroadcastReceiver {
         mData = mMutableMessage;
     }
 
+    //We have our own chain of action that will take place after a message is received
     @Override
     public void onReceive(Context context, Intent intent) {
         String intentAction = intent.getAction();
 
+        //Check if the message is not empty
         if (intentAction != null) {
             Log.d("action_name",intentAction );
+
+            //Create default toastMessage which informs of an error
             String toastMessage = context.getString(R.string.unknown_intent);
+
+            //Check the type of received message (currently only SMS_RECEIVED)
             switch (intentAction) {
                 case SMS_RECEIVED:
                     toastMessage = "SMS Received";
@@ -76,7 +83,8 @@ public class SmsReceiver extends BroadcastReceiver {
 
 
 
-                            Log.d("SMS_Received","FROM: " + '"' + sender + '"' +  " MESSAGE: " + '"' + message + '"');
+                            Log.d("SMS_Received","FROM: " + '"' + sender + '"'
+                                    +  " MESSAGE: " + '"' + message + '"');
 
 
                             Data outputData = new Data.Builder()

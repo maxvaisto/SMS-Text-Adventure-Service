@@ -14,6 +14,12 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+
+/*
+    MyRoomDatabase is used to contain the DAO and the SQL library
+
+ */
+
 @Database(entities = {GameSave.class,User.class}, version = 1, exportSchema = false)
 @TypeConverters({Converters.class})
 public abstract class MyRoomDatabase extends RoomDatabase {
@@ -28,6 +34,7 @@ public abstract class MyRoomDatabase extends RoomDatabase {
     static final ExecutorService databaseWriteExecutor =
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
+    //Used to get initialize the database if such is not found
     public static MyRoomDatabase getDatabase(final Context context){
         if (INSTANCE == null) {
             synchronized (MyRoomDatabase.class) {
@@ -42,6 +49,8 @@ public abstract class MyRoomDatabase extends RoomDatabase {
         }
         return INSTANCE;
     }
+
+    //Neutered member of the class that can be used to repopulate the database after a reset
     private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback() {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {

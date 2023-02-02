@@ -7,6 +7,8 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import java.util.List;
 
+//UserDao is used to connect the SQL databases with the application repository
+//This interface maps the repository commands to corresponding SQL commands
 @Dao
 public interface UserDao {
 
@@ -33,10 +35,10 @@ public interface UserDao {
     void deleteAllUsers();
 
     /*
+    //
     @Update(onConflict = OnConflictStrategy.REPLACE)
     void updateUserGames(GameSave... userGames);
     */
-
     @Query("DELETE FROM gameSaves_table WHERE phoneNumber = :userPhone AND game = :userGame")
     void deleteUserGame(String userPhone, String userGame);
 

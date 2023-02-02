@@ -39,6 +39,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+/*
+    THIS FUNCTION IS USED TO FOR THE UI AND APP PERMISSIONS
+ */
 public class MainActivity extends AppCompatActivity {
 
     private static Context context;
@@ -67,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         mSentSMSMessage = (TextView)findViewById(R.id.SentSMSMessage);
         mButton = findViewById(R.id.button);
 
-        //GET PERMISSIONS
+        //GET PERMISSIONS FROM THE USER
         if (ContextCompat.checkSelfPermission(MainActivity.this,
                 Manifest.permission.SEND_SMS)  +
                 ContextCompat.checkSelfPermission(MainActivity.this,
@@ -86,6 +89,8 @@ public class MainActivity extends AppCompatActivity {
             );
 
         }
+
+        //THIS FUNCTION LISTENS THE INSERT COMMAND BUTTON
         mUserViewModel = new ViewModelProvider(this).get(UserViewModel.class);
         builder = new AlertDialog.Builder(this);
         mButton.setOnClickListener(new View.OnClickListener() {
@@ -128,7 +133,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void insertCommand(View view) {
+    //Used to insert a command manually by the user
+    private void insertCommand(View view) {
         String TAG = "MainProcess";
         String sender = mPhoneNumberText.getText().toString();
         String message = mMessageText.getText().toString();
@@ -170,11 +176,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //Get main windows context
     public static Context giveContext(){
         return context;
     }
 
 
+    //Create the options menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -182,6 +190,8 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+
+    //Used to show user short the application info text
     public void showInfo(MenuItem item) {
         Toast toast = Toast.makeText(this, R.string.toast_message,
                 Toast.LENGTH_SHORT);

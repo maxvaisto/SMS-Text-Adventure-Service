@@ -1,11 +1,8 @@
 package com.example.getsmsmessages;
-
+//This file contains all of the strings used in java code
 public class Constants {
 
-    //Most of these have not been implemented. Most of these were created at the beginning of the
-    //android programming part of the project and have been forgotten ever since.
-    //I was supposed to add here descriptions of each and every command which can be printed
-    //via ".commands [commmand]" e.g. ".commands quit".
+
     public static final String INVALID_COMMAND = "The Command you've sent is invalid. \n " +
             "Start your command with a period and try again. \n " +
             "To see all possible commands type .commands";

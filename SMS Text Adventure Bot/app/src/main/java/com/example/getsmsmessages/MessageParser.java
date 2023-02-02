@@ -22,9 +22,18 @@ import androidx.work.WorkerParameters;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+/*
+    *****************************************
+    THIS IS THE MAIN CLASS OF THE APPLICATION
+    *****************************************
 
+
+
+ */
 public class MessageParser extends Worker {
 
+
+    //Initialize class variables
     private String userPhoneNumber;
     private String userMessage;
     private String purpose;
@@ -34,26 +43,38 @@ public class MessageParser extends Worker {
     private ArrayList<String> mStoryTitles;
     private final int gamesPerPage = 10;
     private LoadAdventureData mLoadAdventureData;
+
+    //Simple class initialization that does not do anything by itself
     public MessageParser(@NonNull Context appContext,
                          @NonNull WorkerParameters workerParams) {
         super(appContext, workerParams);
         context = appContext;
-
+        //Create a new user repository and adventure data loader (fetches Strings)
+        mUserRepository = new UserRepository(Dummy_activity.getAppApplication());
+        mLoadAdventureData = new LoadAdventureData(context);
     }
 
+    //Only after the message parser is called to action the script to read and send a message
+    //is activated
     @NonNull
     @Override
     public Result doWork() {
+
+        //Initialize support variables
         boolean has_outputData= false;
         boolean newUser = false;
         String returnMessage = "";
+
+        //Get text message information from the input data
         userPhoneNumber = getInputData().getString(KEY_SENDER_URI);
         userMessage = getInputData().getString(KEY_MESSAGE_URI);
         purpose = getInputData().getString(KEY_PURPOSE_URI);
         Log.d(TAG, "Purpose is " + purpose);
+
+        //Start the main part of the function
         try{
-            mUserRepository = new UserRepository(Dummy_activity.getAppApplication());
-            mLoadAdventureData = new LoadAdventureData(context);
+
+            //NEW USER
             Log.d(TAG, userPhoneNumber + " " +userMessage);
             if (mUserRepository.getUserPreviousGame(userPhoneNumber).size()==0) {
                 newUser = true;
@@ -390,21 +411,24 @@ public class MessageParser extends Worker {
                                     compileGamePage(lastPosition,"page 0");
                             break;
                         case("about"):
-
-                            /*
-                            Insert here a reason why this app exists
-                             */
                             returnMessage = returnMessage + ABOUT_TEXT;
 
+                        //This should never be reached
+                        default:
+                            returnMessage = returnMessage + "Something went wrong";
                     }
                 }
             }  else {
+                /*
+                    If the user has sent an invalid command that
+                 */
                 if (!newUser){
                     returnMessage = INVALID_COMMAND;
-                    //Add here invalid command message
                 }
 
             }
+
+
             Data outputData = null;
             if (purpose != null){
                 switch(purpose){
@@ -434,7 +458,7 @@ public class MessageParser extends Worker {
         return Result.failure();
     }
 
-    public ArrayList<String> compileMenu (String position){
+    private ArrayList<String> compileMenu (String position){
         String TAG_CompileMenu = "Worker" + "CompileMenu";
         Log.d(TAG_CompileMenu, "position is " + position + " and max per page is " + gamesPerPage);
         ArrayList<String> returnValue = new ArrayList<>();
@@ -488,7 +512,7 @@ public class MessageParser extends Worker {
 
         return "";
     }
-    public ArrayList<String> compileGameInfo(String command, String gamePosition ){
+    private ArrayList<String> compileGameInfo(String command, String gamePosition ){
         ArrayList<String> returnArray = new ArrayList<>();
         String TAG_gameInfo = "WorkerGameInfo";
         int pos = Integer.parseInt(gamePosition);
@@ -521,7 +545,7 @@ public class MessageParser extends Worker {
 
     }
 
-    public String compileGamePage(String lastPosition,String userCommandPage) {
+    private String compileGamePage(String lastPosition,String userCommandPage) {
         String returnString = "";
         String pageTitle = mLoadAdventureData.GetStoryHeader(context,lastPosition,userCommandPage);
         String pageText = mLoadAdventureData.GetStoryText(context,lastPosition,

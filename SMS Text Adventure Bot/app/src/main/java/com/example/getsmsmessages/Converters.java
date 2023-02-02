@@ -8,6 +8,9 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
+/*
+    This class is used to turn the JSson String into a list and the other way around
+ */
 public class Converters {
     @TypeConverter
     public static ArrayList<String> fromString(String value) {

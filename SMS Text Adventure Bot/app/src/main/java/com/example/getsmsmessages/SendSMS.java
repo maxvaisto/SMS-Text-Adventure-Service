@@ -11,7 +11,18 @@ import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/*
+    SendSMS class is used to send the compiled messages to the user
+    There are currently two alternatives for sending a SMS message
+    of which the first one is not used
+
+    The functions contain debugging Toast messages that are currently unused
+ */
 public class SendSMS {
+
+    private static String TAG="SMS_OUT";
+
+    //Can be used to send a single message
     public void sendSMS(String phoneNo, String msg) {
         try {
             SmsManager smsManager = SmsManager.getDefault();
@@ -30,7 +41,7 @@ public class SendSMS {
             ex.printStackTrace();
         }
     }
-    private static String TAG="SMS_OUT";
+
     public void sendLongSMS(String phoneNo, String message) {
         try {
             SmsManager smsManager = SmsManager.getDefault();
