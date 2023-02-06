@@ -7,7 +7,6 @@ import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-import androidx.room.TypeConverter;
 import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
@@ -30,7 +29,7 @@ public abstract class MyRoomDatabase extends RoomDatabase {
     public static MyRoomDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
 
-    private static String TAG = "MyRoomDatabase";
+    private static final String TAG = "MyRoomDatabase";
     static final ExecutorService databaseWriteExecutor =
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 

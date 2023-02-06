@@ -5,7 +5,6 @@ import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-
 import java.util.ArrayList;
 
 //User SQL database contain the information of every user who has sent a message (ever)

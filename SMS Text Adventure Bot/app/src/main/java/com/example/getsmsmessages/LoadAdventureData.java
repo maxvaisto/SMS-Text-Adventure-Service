@@ -12,6 +12,7 @@ import org.json.JSONException;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -22,9 +23,14 @@ public class LoadAdventureData {
 
     //Loads the actual text adventure text contained within the assets directory
 
+
+    //Used to retrieve the assets of the application
     private AssetManager mAssetManager;
+
+    //Debug tag for the class
     private String TAG = "EMPTY_TAG";
 
+    //Used to get the filepath of the application
     private Context mContext;
     public LoadAdventureData(Context context){
         mAssetManager = context.getAssets();
@@ -67,7 +73,7 @@ public class LoadAdventureData {
         return new ArrayList<>();
     }
     public ArrayList<String> GetStoryInfo(Context context, String story) {
-        story = story.replaceAll("[^a-zA-Z0-9.\\-]", "_");
+        story = story.replaceAll("[^a-zA-Z\\d.\\-]", "_");
         TAG = "loadTitles";
         mAssetManager = context.getAssets();
         mContext = context;
@@ -116,8 +122,10 @@ public class LoadAdventureData {
         gameInfo.add("ERROR");
         return gameInfo;
     }
+
+    //Retrieves the Go To Pages for the specific page of the story
     public ArrayList<String> GetStoryGoTo(Context context, String story, String page) {
-        story = story.replaceAll("[^a-zA-Z0-9.\\-]", "_");
+        story = story.replaceAll("[^a-zA-Z\\d.\\-]", "_");
         TAG = "LoadStoryGoTo";
         mAssetManager = context.getAssets();
         mContext = context;
@@ -146,13 +154,13 @@ public class LoadAdventureData {
                         String GoToJsonMap = loadJSONFromAsset(path);
                         try {
                             Gson gson = new Gson();
-                            HashMap<String, ArrayList<String>> storyGoTo = new HashMap<String, ArrayList<String>>();
+                            HashMap<String, ArrayList<String>> storyGoTo = new HashMap<>();
                             storyGoTo = gson.fromJson(GoToJsonMap, storyGoTo.getClass());
                             //Log.d("goTo",goTo.toString());
                             Log.d("goTo", storyGoTo.get("page 6").get(0));
                             Log.d("Load json", "storyGoTo successfully loaded for story " + fileList[indexOfStory]);
                             ArrayList<String> pageGoTo = storyGoTo.get(page);
-                            if (!pageGoTo.isEmpty()) {
+                            if ((pageGoTo == null) || !pageGoTo.isEmpty()) {
                                 Log.d(TAG, "pageGoTo " + page +
                                         " found for story " + fileList[indexOfStory]);
                                 return pageGoTo;
@@ -163,11 +171,12 @@ public class LoadAdventureData {
 
                             }
                         } catch (Exception e) {
+                            Log.e(TAG, "storyGoTo not found for  " + fileList[indexOfStory]);
                             e.printStackTrace();
                         }
                     }
 
-                    Log.e(TAG, "storyGoTo not found for  " + fileList[indexOfStory]);
+
                 }
             }
         } catch (IOException e) {
@@ -177,7 +186,7 @@ public class LoadAdventureData {
         return new ArrayList<>();
     }
     public ArrayList<String> GetStoryChoices(Context context, String story, String page) {
-        story = story.replaceAll("[^a-zA-Z0-9\\.\\-]", "_");
+        story = story.replaceAll("[^a-zA-Z\\d.\\-]", "_");
         TAG = "LoadStory";
         mAssetManager = context.getAssets();
         mContext = context;
@@ -198,38 +207,36 @@ public class LoadAdventureData {
                 return returnDefault;
             } else {
                 String[] storyFileList = mAssetManager.list("Text Adventures/"+fileList[indexOfStory]);
-                for (int k = 0; k<storyFileList.length; k++){
-                    String path = "Text Adventures/" +  fileList[indexOfStory] + "/" + storyFileList[k];
+                for (String s : storyFileList) {
+                    String path = "Text Adventures/" + fileList[indexOfStory] + "/" + s;
 
-                    Log.d(TAG, storyFileList[k]);
-                    switch(storyFileList[k]){
-                        case("storyChoices.json"):
-                            String storyChoicesJSon = loadJSONFromAsset(path);
-                            try {
-                                Gson gson = new Gson();
-                                HashMap<String,ArrayList<String>> storyChoices = new HashMap<String,ArrayList<String>>();
-                                storyChoices = gson.fromJson(storyChoicesJSon,storyChoices.getClass());
+                    Log.d(TAG, s);
+                    if ("storyChoices.json".equals(s)) {
+                        String storyChoicesJSon = loadJSONFromAsset(path);
+                        try {
+                            Gson gson = new Gson();
+                            HashMap<String, ArrayList<String>> storyChoices = new HashMap<String, ArrayList<String>>();
+                            storyChoices = gson.fromJson(storyChoicesJSon, storyChoices.getClass());
 
-                                //Log.d("storyChoices",storyChoices.toString());
-                                Log.d("storyChoices",storyChoices.get("page 6").get(0));
-                                Log.d("Load json", "storyChoices successfully loaded for story " + fileList[indexOfStory]);
-                                ArrayList<String>  pageChoices = storyChoices.get(page);
-                                if (!pageChoices.isEmpty()){
-                                    Log.d(TAG,"pageChoices "+ page +
-                                            " found for story " + fileList[indexOfStory]);
-                                    return pageChoices;
+                            //Log.d("storyChoices",storyChoices.toString());
+                            Log.d("storyChoices", storyChoices.get("page 6").get(0));
+                            Log.d("Load json", "storyChoices successfully loaded for story " + fileList[indexOfStory]);
+                            ArrayList<String> pageChoices = storyChoices.get(page);
+                            if ((pageChoices == null) || !pageChoices.isEmpty()) {
+                                Log.d(TAG, "pageChoices " + page +
+                                        " found for story " + fileList[indexOfStory]);
+                                return pageChoices;
 
-                                } else { Log.e(TAG, "ERROR" + page +
+                            } else {
+                                Log.e(TAG, "ERROR" + page +
                                         " not found for story" + fileList[indexOfStory]);
 
-                                }
-                            } catch (Exception e) {
-                                e.printStackTrace();
                             }
-                            break;
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            Log.e(TAG, "storyChoices not found for  " + fileList[indexOfStory]);
+                        }
                     }
-
-                    Log.e(TAG, "storyChoices not found for  " + fileList[indexOfStory]);
                 }
             }
         } catch (IOException e) {
@@ -239,7 +246,7 @@ public class LoadAdventureData {
         return new ArrayList<>();
     }
     public String GetStoryText(Context context, String story, String page) {
-        story = story.replaceAll("[^a-zA-Z0-9\\.\\-]", "_");
+        story = story.replaceAll("[^a-zA-Z\\d.\\-]", "_");
         TAG = "LoadStory";
         mAssetManager = context.getAssets();
         mContext = context;
@@ -251,50 +258,48 @@ public class LoadAdventureData {
             for (int i = 0; i<fileList.length; i++) {
                 if (fileList[i].toString().equals(story)) {
                     indexOfStory = i;
-                    Log.e(TAG,"Story: " + story + " was not found");
                 }
             }
+
             if (indexOfStory==-1){
                 //Add error messages to other file and reference the variable names instead
+                Log.e(TAG,"Story: " + story + " was not found");
                 return "ERROR: STORY NOT FOUND!";
             } else {
                 String[] storyFileList = mAssetManager.list("Text Adventures/"+fileList[indexOfStory]);
-                for (int k = 0; k<storyFileList.length; k++){
-                    String path = "Text Adventures/" +  fileList[indexOfStory] + "/" + storyFileList[k];
+                for (String s : storyFileList) {
+                    String path = "Text Adventures/" + fileList[indexOfStory] + "/" + s;
 
-                    Log.d(TAG, storyFileList[k]);
-                    switch(storyFileList[k]){
-                        case("storyText.json"):
-                            String storyTextJSon = loadJSONFromAsset(path);
-                            try {
-                                Gson gson = new Gson();
-                                HashMap<String,String> storyText = new HashMap<String,String>();
-                                storyText = gson.fromJson(storyTextJSon,storyText.getClass());
-                                if (storyText.size()>0) {
-                                    Log.d(TAG, "storyText successfully loaded for story " +
-                                            fileList[indexOfStory]);
-                                    String pageText = storyText.get(page);
-                                    if (!pageText.isEmpty()){
-                                        Log.d(TAG,"pageText "+ page +
-                                                " found for story " + fileList[indexOfStory]);
-                                        return pageText;
+                    Log.d(TAG, s);
+                    if ("storyText.json".equals(s)) {
+                        String storyTextJSon = loadJSONFromAsset(path);
+                        try {
+                            Gson gson = new Gson();
+                            HashMap<String, String> storyText = new HashMap<String, String>();
+                            storyText = gson.fromJson(storyTextJSon, storyText.getClass());
+                            if (storyText.size() > 0) {
+                                Log.d(TAG, "storyText successfully loaded for story " +
+                                        fileList[indexOfStory]);
+                                String pageText = storyText.get(page);
+                                if ((pageText == null) || !pageText.isEmpty()) {
+                                    Log.d(TAG, "pageText " + page +
+                                            " found for story " + fileList[indexOfStory]);
+                                    return pageText;
 
-                                    } else { Log.e(TAG, "ERROR" + page +
+                                } else {
+                                    Log.e(TAG, "ERROR" + page +
                                             " not found for story" + fileList[indexOfStory]);
 
-                                    }
-                                } else {
-                                    Log.e(TAG, "storyText not loaded");
                                 }
-
-                            } catch (Exception e) {
-                                e.printStackTrace();
+                            } else {
+                                Log.e(TAG, "storyText not loaded");
                             }
 
-                            break;
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            Log.e(TAG, "storyText not found for  " + fileList[indexOfStory]);
+                        }
                     }
-
-                    Log.e(TAG, "storyText not found for  " + fileList[indexOfStory]);
                 }
             }
         } catch (IOException e) {
@@ -306,11 +311,10 @@ public class LoadAdventureData {
 
     //USE THIS IF TITLE IS EVER SEPARATED FROM TEXT BODY
     public String GetStoryHeader(Context context, String story, String page) {
-        story = story.replaceAll("[^a-zA-Z0-9\\.\\-]", "_");
+        story = story.replaceAll("[^a-zA-Z\\d.\\-]", "_");
         TAG = "LoadHeaders";
         mAssetManager = context.getAssets();
         mContext = context;
-        ArrayList<ArrayList<String>> gameInfo = new ArrayList<ArrayList<String>>();
         try {
             String[] fileList = mAssetManager.list("Text Adventures");
             //CHANGE TO int i = 0
@@ -327,44 +331,40 @@ public class LoadAdventureData {
 
             } else {
                 String[] storyFileList = mAssetManager.list("Text Adventures/"+fileList[indexOfStory]);
-                for (int k = 0; k<storyFileList.length; k++){
-                    String path = "Text Adventures/" +  fileList[indexOfStory] + "/" + storyFileList[k];
+                for (String s : storyFileList) {
+                    String path = "Text Adventures/" + fileList[indexOfStory] + "/" + s;
 
-                    Log.d(TAG, storyFileList[k]);
-                    switch(storyFileList[k]){
-                        case("storyTitles.json"):
-                            String storyTitleJSon = loadJSONFromAsset(path);
-                            try {
-                                Gson gson = new Gson();
-                                HashMap<String,String> storyTitle = new HashMap<String,String>();
-                                storyTitle = gson.fromJson(storyTitleJSon,storyTitle.getClass());
-                                Log.d(TAG,storyTitle.toString());
-                                if (storyTitle.size()>0) {
-                                    Log.d(TAG, "storyTitles successfully loaded for story " +
-                                            fileList[indexOfStory]);
-                                    String pageTitle = storyTitle.get(page);
-                                    if (!pageTitle.isEmpty()){
-                                        Log.d(TAG,"pageTitle "+ page +
-                                                " found for story " + fileList[indexOfStory]);
-                                        return pageTitle;
+                    Log.d(TAG, s);
+                    if ("storyTitles.json".equals(s)) {
+                        String storyTitleJSon = loadJSONFromAsset(path);
+                        try {
+                            Gson gson = new Gson();
+                            HashMap<String, String> storyTitle = new HashMap<>();
+                            storyTitle = gson.fromJson(storyTitleJSon, storyTitle.getClass());
+                            Log.d(TAG, storyTitle.toString());
+                            if (storyTitle.size() > 0) {
+                                Log.d(TAG, "storyTitles successfully loaded for story " +
+                                        fileList[indexOfStory]);
+                                String pageTitle = storyTitle.get(page);
+                                if ((pageTitle == null) || !pageTitle.isEmpty()) {
+                                    Log.d(TAG, "pageTitle " + page +
+                                            " found for story " + fileList[indexOfStory]);
+                                    return pageTitle;
 
-                                    } else {
-                                        Log.e(TAG, "ERROR" + page +
-                                                " not found for story" + fileList[indexOfStory]);
-
-                                    }
                                 } else {
-                                    Log.e(TAG, "storyTitles not loaded");
-                                }
+                                    Log.e(TAG, "ERROR" + page +
+                                            " not found for story" + fileList[indexOfStory]);
 
-                            } catch (Exception e) {
-                                e.printStackTrace();
+                                }
+                            } else {
+                                Log.e(TAG, "storyTitles not loaded");
                             }
 
-                            break;
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            Log.e(TAG, "storyTitle not found for  " + fileList[indexOfStory]);
+                        }
                     }
-
-                    Log.e(TAG, "storyTitle not found for  " + fileList[indexOfStory]);
                 }
             }
         } catch (IOException e) {
@@ -375,7 +375,7 @@ public class LoadAdventureData {
     }
 
     //Used to get the JSON file with the filepath
-    public String loadJSONFromAsset(String filepath) {
+    private String loadJSONFromAsset(String filepath) {
         String json = null;
         try {
             Resources res = mContext.getResources();
@@ -385,7 +385,7 @@ public class LoadAdventureData {
             byte[] buffer = new byte[size];
             is.read(buffer);
             is.close();
-            json = new String(buffer, "UTF-8");
+            json = new String(buffer, StandardCharsets.UTF_8);
 
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -396,4 +396,6 @@ public class LoadAdventureData {
 
         return json;
     }
+
+
 }

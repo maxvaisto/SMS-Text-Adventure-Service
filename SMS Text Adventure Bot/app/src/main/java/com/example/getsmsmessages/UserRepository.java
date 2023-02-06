@@ -2,10 +2,7 @@ package com.example.getsmsmessages;
 
 import android.app.Application;
 import android.util.Log;
-
-import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +16,6 @@ public class UserRepository {
 
     private UserDao mUserDao;
 
-    //IS THIS NEEDED?
     private LiveData<List<String>> mAllPhoneNumbers;
 
     //First when the user repository is created connect it to the database DAO
@@ -38,14 +34,14 @@ public class UserRepository {
         return mAllPhoneNumbers;
     }
 
+    //Add a new user
     public void insertUser(String userPhone, ArrayList<String> userPreviousGame){
         User userInfo = new User(userPhone,userPreviousGame);
-        MyRoomDatabase.databaseWriteExecutor.execute(() -> {
-            mUserDao.insertUser(userInfo);
-        });
+        MyRoomDatabase.databaseWriteExecutor.execute(() -> mUserDao.insertUser(userInfo));
 
     }
 
+    //Ge the previous game file
     public ArrayList<String> getUserPreviousGame(String userPhone){
         //Fetch user games from the DAO
         List<User> userList = mUserDao.getPreviousGames(userPhone);
@@ -59,11 +55,10 @@ public class UserRepository {
 
     }
 
+    //Insert the new game state
     public void insertUserGame(String userPhone, String game, ArrayList<String> userGameProgress){
         GameSave userGameSave = new GameSave(userPhone,game,userGameProgress);
-        MyRoomDatabase.databaseWriteExecutor.execute(() -> {
-            mUserDao.insertGame(userGameSave);
-        });
+        MyRoomDatabase.databaseWriteExecutor.execute(() -> mUserDao.insertGame(userGameSave));
 
     }
 
@@ -86,9 +81,7 @@ public class UserRepository {
     }
 
     public void deleteUser(String userPhone){
-        MyRoomDatabase.databaseWriteExecutor.execute(() -> {
-            mUserDao.deleteUser(userPhone);
-        });
+        MyRoomDatabase.databaseWriteExecutor.execute(() -> mUserDao.deleteUser(userPhone));
 
     }
 
@@ -96,40 +89,30 @@ public class UserRepository {
         BELOW UNIMPLEMENTED BUT USEFUL COMMANDS
      */
     public void deleteUserGameSave(String userPhone, String game){
-        MyRoomDatabase.databaseWriteExecutor.execute(() -> {
-            mUserDao.deleteUserGame(userPhone,game);
-        });
+        MyRoomDatabase.databaseWriteExecutor.execute(() -> mUserDao.deleteUserGame(userPhone,game));
 
     }
 
 
 
     public void deleteAllUsers(){
-        MyRoomDatabase.databaseWriteExecutor.execute(() -> {
-            mUserDao.deleteAllUsers();
-        });
+        MyRoomDatabase.databaseWriteExecutor.execute(() -> mUserDao.deleteAllUsers());
 
     }
 
     public void deleteAllGamesOfAllUsers(){
-        MyRoomDatabase.databaseWriteExecutor.execute(() -> {
-            mUserDao.deleteAllUserGamesForAllUsers();
-        });
+        MyRoomDatabase.databaseWriteExecutor.execute(() -> mUserDao.deleteAllUserGamesForAllUsers());
 
     }
 
     public void deleteAllGamesOfUser(String userPhone){
-        MyRoomDatabase.databaseWriteExecutor.execute(() -> {
-            mUserDao.deleteAllGamesOfUser(userPhone);
-        });
+        MyRoomDatabase.databaseWriteExecutor.execute(() -> mUserDao.deleteAllGamesOfUser(userPhone));
 
     }
 
 
     public void deleteUserGame(String userPhone, String game){
-        MyRoomDatabase.databaseWriteExecutor.execute(() -> {
-            mUserDao.deleteUserGame(userPhone,game);
-        });
+        MyRoomDatabase.databaseWriteExecutor.execute(() -> mUserDao.deleteUserGame(userPhone,game));
 
     }
     /*

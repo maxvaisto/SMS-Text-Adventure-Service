@@ -10,7 +10,6 @@ import static com.example.getsmsmessages.Constants.LEARN_MORE;
 import static com.example.getsmsmessages.Constants.NEW_PLAYER_GREET_MESSAGE;
 
 import android.content.Context;
-import android.net.Uri;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -34,15 +33,26 @@ public class MessageParser extends Worker {
 
 
     //Initialize class variables
-    private String userPhoneNumber;
-    private String userMessage;
-    private String purpose;
+
+    //Repo for user and game data
     public UserRepository mUserRepository;
+    //App context used for receiving game data
     private final Context context;
+
+    //Debug tag (Start of debug TAG for this class)
     private String TAG = "WorkerLog";
+
+    //List of story titles private member variable to reduce passing of data to the compileMenu
+    //function simpler
     private ArrayList<String> mStoryTitles;
+
+    //Constant that limits the amount of games listed per page
     private final int gamesPerPage = 10;
-    private LoadAdventureData mLoadAdventureData;
+
+    //Instance of LoadAdventureData used for reading the game page text from JSON files
+    private final LoadAdventureData mLoadAdventureData;
+
+
 
     //Simple class initialization that does not do anything by itself
     public MessageParser(@NonNull Context appContext,
@@ -63,30 +73,36 @@ public class MessageParser extends Worker {
         //Initialize support variables
         boolean has_outputData= false;
         boolean newUser = false;
-        String returnMessage = "";
+        StringBuilder returnMessage = new StringBuilder();
+
+        //Game commands
+        ArrayList<String> commands = new ArrayList<>(Arrays.asList("commands","forget_me","about"));
 
         //Get text message information from the input data
-        userPhoneNumber = getInputData().getString(KEY_SENDER_URI);
-        userMessage = getInputData().getString(KEY_MESSAGE_URI);
-        purpose = getInputData().getString(KEY_PURPOSE_URI);
+
+        //User phone number
+        String userPhoneNumber = getInputData().getString(KEY_SENDER_URI);
+        //Sent text message
+        String userMessage = getInputData().getString(KEY_MESSAGE_URI);
+        //Used to detect invalid URIs
+        String purpose = getInputData().getString(KEY_PURPOSE_URI);
+        //For debugging
         Log.d(TAG, "Purpose is " + purpose);
 
         //Start the main part of the function
         try{
 
             //NEW USER
-            Log.d(TAG, userPhoneNumber + " " +userMessage);
+            Log.d(TAG, userPhoneNumber + " " + userMessage);
             if (mUserRepository.getUserPreviousGame(userPhoneNumber).size()==0) {
                 newUser = true;
                 Log.d(TAG, "NEW USER: " + userPhoneNumber);
-                ArrayList<String> userPreviousGame = new ArrayList<>();
-                ArrayList<String> userMenuProgress = new ArrayList<>();
-
-                //Insert user to database
 
                 //User
-                userMenuProgress.addAll(Arrays.asList("1"));
-                userPreviousGame.addAll(Arrays.asList("Menu"));
+                ArrayList<String> userPreviousGame = new ArrayList<>(Arrays.asList("Menu"));
+                ArrayList<String> userMenuProgress = new ArrayList<>(Arrays.asList("1"));
+
+                //Insert user to database
                 Log.d(TAG, "Position to be set to:" + userMenuProgress);
                 mUserRepository.insertUser(userPhoneNumber, userPreviousGame);
                 //GameSave
@@ -94,113 +110,106 @@ public class MessageParser extends Worker {
                 mUserRepository.insertUserGame(userPhoneNumber, "Menu", userMenuProgress);
 
                 //Add new player greeting to the message
-                returnMessage = NEW_PLAYER_GREET_MESSAGE + "\n";
+                returnMessage = new StringBuilder(NEW_PLAYER_GREET_MESSAGE + "\n");
                 Thread.sleep(1000);
             }
 
             TAG = TAG + "Menu";
-            List<String> gameProgress = Arrays.asList("0","0");
-            ArrayList<String> commands = new ArrayList<>();
+            List<String> gameProgress;
 
-            commands.add("commands");
-            commands.add("forget_me");
-            commands.add("about");
             ArrayList<String> position = mUserRepository.getUserPreviousGame(userPhoneNumber);
-            String lastPosition = "0";
+            String lastPosition;
 
-
+            String lastPositionInGame = "";
             try {
                 lastPosition = position.get(position.size()-1);
+                Log.d(TAG,"Last position in game is: " + lastPositionInGame);
             } catch (Exception e) {
                 e.printStackTrace();
+                lastPosition = "0";
                 Log.e(TAG, "lastPosition was not loaded from file and was set to zero");
             }
+
+
+            //Try to load the user's current game position
             try {
                 gameProgress = mUserRepository.getUserGameProgress(userPhoneNumber,
                         lastPosition);
+
             } catch (Exception e) {
+                gameProgress = Arrays.asList("0","0");
                 e.printStackTrace();
                 Log.e(TAG, "gameProgress was not loaded from file and was set to \"0\",\"0\"");
             }
-            String lastPositionInGame = gameProgress.get(gameProgress.size()-1);
-            Log.d(TAG,"THIS: "+position.get(position.size()-1));
+
+            //Get last position in game
+            lastPositionInGame = gameProgress.get(gameProgress.size()-1);
+
+            //Get a list of all of the current stories
             mStoryTitles = mLoadAdventureData.GetStoryTitles(context);
-            switch (position.get(position.size()-1)) {
 
-                case ("Menu"):
+            //Log.d(TAG,"There");
+            //Check the current position of the user to give differing messages if the user is in
+            //game or in the Menu
+            //The user is in menu
+            if ("Menu".equals(position.get(position.size() - 1))) {
+                Log.d(TAG, userPhoneNumber + " is in Menu");
 
-                    Log.d(TAG, userPhoneNumber + " is in Menu");
+                ArrayList<String> menuResults = compileMenu(lastPositionInGame);
+                if (newUser) {
+                    returnMessage.append(menuResults.get(0));
 
+                    returnMessage.append("\n\n").append(LEARN_MORE);
 
+                }
+                //ADD COMMANDS FROM MENU
+                for (int i = 1; i < menuResults.size(); i++) {
+                    commands.add(menuResults.get(i));
+                }
+                //
+                //The user is in game
+            } else {//Check if the user is in the game description / into page
+                if (lastPositionInGame.equals("-1")) {
 
-                    ArrayList<String> menuResults =compileMenu(lastPositionInGame);
-                    if (newUser){
-                        returnMessage = returnMessage + menuResults.get(0);
+                    //Only in the game description page can the user select play
+                    //to start playing the adventure
+                    commands.add("play");
 
-                        returnMessage = returnMessage + "\n\n" + LEARN_MORE;
+                } else {
+                    //Otherwise add the current page Go To pages to the list of
+                    // available commands
 
+                    //Get go to pages from file
+                    ArrayList<String> storyGoTo = mLoadAdventureData.GetStoryGoTo(
+                            context, lastPosition,
+                            "page " + lastPositionInGame);
+                    //Add their corresponding indexes to the list of available commands
+                    for (int j = 1; j < storyGoTo.size() + 1; j++) {
+                        commands.add(String.valueOf(j));
                     }
-                    //ADD COMMANDS FROM MENU
-                    for (int i=1; i<menuResults.size(); i++) {
-                        commands.add(menuResults.get(i));
-                    }
-                    //
-                    break;
-                //GAME
-                default:
-                    if(lastPositionInGame.equals("-1")){
-                        commands.addAll(Arrays.asList("back","quit","play"));
-                        //USER IS IN INTRO SCREEN THAT PRINTS THE GAME DESCRIPTION
+                }
 
-                    } else {
-                        ArrayList<String> storyGoTo = mLoadAdventureData.GetStoryGoTo(
-                                context,lastPosition,
-                                "page " + lastPositionInGame);
-                        for (int j=1;j<storyGoTo.size()+1;j++){
-                            commands.add(String.valueOf(j));
-                        }
-                        commands.addAll(Arrays.asList("quit","back"));
-                        Log.d(TAG, commands.toString());
-                    }
-                    //Implement Game Menu
-
-
-                    //Load the amount of choices and add (1 to choices.length) to "new commands
-                    break;
+                //Also add quit and back
+                commands.addAll(Arrays.asList("quit", "back"));
             }
             Log.d(TAG,"COMMANDS: " + commands);
             //CHECK THE MESSAGE
-            boolean isCommand = false;
-            String userCommand="";
-            if (userMessage.length()>1 && !newUser){
-                userCommand = userMessage.substring(1, userMessage.length());
-                Log.d(TAG, "userCommand: " +userCommand);
+            boolean isCommand = checkCommand(userMessage,commands,newUser);
+            String userCommand= userMessage.substring(1);
 
-
-                for (int i=0; i < commands.size(); i++) {
-                    if (userCommand.equals(commands.get(i))) {
-                        isCommand = true;
-                        Log.d(TAG, "userCommand found from commands");
-                        break;
-                    }
-                }
-            }
-            //If user message in command format and the user is not new
-            if (isCommand){
+            //If the user is in a position to send a command worth reading (not a new user)
+            // and the command is valid we continue
+            if (isCommand && !newUser){
                 //Initialize the updated position and progress
                 ArrayList<String> updatedGameProgress = new ArrayList<>();
                 ArrayList<String> updatedPosition = new ArrayList<>();
-                //Move this
-                boolean number;
-                try {
-                    Integer.parseInt(userCommand);
-                    number = true;
-                    Log.d(TAG, "Command IS number");
-                } catch (Exception e) {
-                    number = false;
-                }
+
+
                 //If the command is a number
-                if (number){
+                if (isNumber(userCommand)){
+
+                    //Number command used in the main menu
+                    //This creates a
                     if (lastPosition.equals("Menu")){
 
                         //If the user has an empty save:
@@ -214,23 +223,21 @@ public class MessageParser extends Worker {
                         ArrayList<String> returnArray = compileGameInfo(
                                 userCommand,lastPositionInGame);
 
-                        //If the user is further than the game beginning
+                        //If the user is at the beginning of the game
                         if (mUserRepository.getUserGameProgress(
                                 userPhoneNumber,returnArray.get(1)).size()<2){
                             updatedGameProgress.add("-1");
-                            returnMessage = returnMessage + returnArray.get(0);
+                            returnMessage.append(returnArray.get(0));
                             updatedPosition.addAll(position);
                             updatedPosition.add(returnArray.get(1));
                             Log.d(TAG, "Position to be set to:" +updatedPosition);
                             mUserRepository.insertUser(userPhoneNumber,updatedPosition);
-
-                            //IF GAME SAVE DOES NOT EXISTS CREATE A NEW ONE
-
                             Log.d(TAG, "GameProgress for " + returnArray.get(1) + "to be set to:"
                                     +updatedGameProgress);
                             mUserRepository.insertUserGame(
                                     userPhoneNumber,returnArray.get(1),updatedGameProgress);
                         } else{
+                            //the user is further than the game beginning
                             updatedPosition.addAll(position);
                             updatedPosition.add(returnArray.get(1));
                             Log.d(TAG, "Position to be set to:" +updatedPosition);
@@ -240,8 +247,8 @@ public class MessageParser extends Worker {
                             lastPositionInGame = gameProgress.get(gameProgress.size()-1);
                             Log.d(TAG, "lastPosition is: " +returnArray.get(1) + "page is: "   +
                                     "page " + lastPositionInGame);
-                            returnMessage = returnMessage + compileGamePage(
-                                    returnArray.get(1),"page " + lastPositionInGame);
+                            returnMessage.append(compileGamePage(
+                                    returnArray.get(1), "page " + lastPositionInGame));
                         }
 
                     } else {
@@ -258,10 +265,10 @@ public class MessageParser extends Worker {
                         }
 
                         String pageNumber =
-                                userCommandPage.substring(5,userCommandPage.length());
+                                userCommandPage.substring(5);
                         Log.d(TAG,"POSSIBLE PAGES" + pageGoTo);
                         Log.d(TAG, "Integer command " + commandInt + " matches " + userCommandPage);
-                        returnMessage = returnMessage + compileGamePage(lastPosition,userCommandPage);
+                        returnMessage.append(compileGamePage(lastPosition, userCommandPage));
 
                         updatedGameProgress.addAll(gameProgress);
                         updatedGameProgress.add(pageNumber);
@@ -275,7 +282,6 @@ public class MessageParser extends Worker {
                 else{
                     //Command is not a number and therefore is one of the following commands
                     int lastPositionInGameInt = Integer.parseInt(lastPositionInGame);
-
 
                     switch(userCommand){
                         case("quit"):
@@ -295,7 +301,7 @@ public class MessageParser extends Worker {
                             //GET LAST POSITION IN MENU AND PRINT IT
                             gameProgress = mUserRepository.getUserGameProgress(userPhoneNumber,"Menu");
                             lastPositionInGame = gameProgress.get(gameProgress.size()-1);
-                            returnMessage = returnMessage + compileMenu(lastPositionInGame).get(0);
+                            returnMessage.append(compileMenu(lastPositionInGame).get(0));
 
                             break;
                         case("back"):
@@ -305,7 +311,6 @@ public class MessageParser extends Worker {
                             If the user is at the beginning of and adventure or in the description
                             page, the user should be sent back to the menu page
                                 (with the corresponding index number?)
-
                              */
                             Log.d(TAG, "back started");
                             Log.d(TAG, "gameProgress "+ gameProgress +
@@ -332,14 +337,14 @@ public class MessageParser extends Worker {
                                 mUserRepository.insertUser(userPhoneNumber,updatedPosition);
                                 gameProgress = mUserRepository.getUserGameProgress(userPhoneNumber,"Menu");
                                 lastPositionInGame = gameProgress.get(gameProgress.size()-1);
-                                returnMessage = returnMessage + compileMenu(lastPositionInGame).get(0);
+                                returnMessage.append(compileMenu(lastPositionInGame).get(0));
                             }
                             else {
                                 for (int i = 0; i<gameProgress.size()-1;i++){
                                     updatedGameProgress.add(gameProgress.get(i));
                                 }
                                 lastPositionInGame = updatedGameProgress.get(updatedGameProgress.size()-1);
-                                returnMessage = returnMessage + compileGamePage(lastPosition,"page " +lastPositionInGame);
+                                returnMessage.append(compileGamePage(lastPosition, "page " + lastPositionInGame));
                                 Log.d(TAG, "GameProgress to be set to:" +updatedGameProgress);
                                 mUserRepository.insertUserGame(userPhoneNumber,
                                         lastPosition, updatedGameProgress);
@@ -349,9 +354,9 @@ public class MessageParser extends Worker {
                             break;
                         case("commands"):
                             //List possible commands
-                            returnMessage = returnMessage + "Possible commands are: ";
+                            returnMessage.append("Possible commands are: ");
                             for (int i = 0; i<commands.size();i++){
-                                returnMessage = returnMessage + ", \"." + commands.get(i) + "\"";
+                                returnMessage.append(", \".").append(commands.get(i)).append("\"");
                             }
 
 
@@ -364,15 +369,15 @@ public class MessageParser extends Worker {
                             mUserRepository.insertUserGame(userPhoneNumber,
                                     position.get(position.size()-1), updatedGameProgress);
                             lastPositionInGame = updatedGameProgress.get(updatedGameProgress.size()-1);
-                            returnMessage = returnMessage + compileGamePage(
-                                    lastPosition,lastPositionInGame);
+                            returnMessage.append(compileGamePage(
+                                    lastPosition, lastPositionInGame));
                             break;
                         case("forget_me"):
                             //Removes the user from user_table (they will still remain in
                             //the saveGame_table
                             Log.d(TAG, "User" + userPhoneNumber + " is to be forgotten");
                             mUserRepository.deleteUser(userPhoneNumber);
-                            returnMessage = returnMessage + "You've been forgotten.";
+                            returnMessage.append("You've been forgotten.");
                             break;
                         case("next"):
                             updatedGameProgress.add(String.valueOf(
@@ -381,7 +386,7 @@ public class MessageParser extends Worker {
                             mUserRepository.insertUserGame(userPhoneNumber,"Menu",
                                     updatedGameProgress);
                             lastPositionInGame = updatedGameProgress.get(updatedGameProgress.size()-1);
-                            returnMessage = returnMessage + compileMenu(lastPositionInGame).get(0);
+                            returnMessage.append(compileMenu(lastPositionInGame).get(0));
 
                             break;
                         case("previous"):
@@ -392,7 +397,7 @@ public class MessageParser extends Worker {
                             mUserRepository.insertUserGame(userPhoneNumber,"Menu",
                                     updatedGameProgress);
                             lastPositionInGame = updatedGameProgress.get(updatedGameProgress.size()-1);
-                            returnMessage = returnMessage + compileMenu(lastPositionInGame).get(0);
+                            returnMessage.append(compileMenu(lastPositionInGame).get(0));
                             break;
                         case("play"):
                             /*
@@ -407,15 +412,14 @@ public class MessageParser extends Worker {
                             Log.d(TAG, "GameProgress to be set to:" +updatedGameProgress);
                             mUserRepository.insertUserGame(userPhoneNumber,
                                     lastPosition,updatedGameProgress);
-                            returnMessage = returnMessage +
-                                    compileGamePage(lastPosition,"page 0");
+                            returnMessage.append(compileGamePage(lastPosition, "page 0"));
                             break;
                         case("about"):
-                            returnMessage = returnMessage + ABOUT_TEXT;
+                            returnMessage.append(ABOUT_TEXT);
 
                         //This should never be reached
                         default:
-                            returnMessage = returnMessage + "Something went wrong";
+                            returnMessage.append("Something went wrong");
                     }
                 }
             }  else {
@@ -423,25 +427,24 @@ public class MessageParser extends Worker {
                     If the user has sent an invalid command that
                  */
                 if (!newUser){
-                    returnMessage = INVALID_COMMAND;
+                    returnMessage = new StringBuilder(INVALID_COMMAND);
                 }
 
             }
 
+            //Finally we compile the results into a URI to be sent to the SMS message sender
 
             Data outputData = null;
             if (purpose != null){
-                switch(purpose){
-                    case("RETURN"):
-                        outputData = new Data.Builder()
-                                .putString(KEY_RETURN_MESSAGE_URI,returnMessage)
-                                .build();
-                        has_outputData=true;
-
+                if ("RETURN".equals(purpose)) {
+                    outputData = new Data.Builder()
+                            .putString(KEY_RETURN_MESSAGE_URI, returnMessage.toString())
+                            .build();
+                    has_outputData = true;
                 }
             }
             SendSMS messenger = new SendSMS();
-            messenger.sendLongSMS(userPhoneNumber, returnMessage);
+            messenger.sendLongSMS(userPhoneNumber, returnMessage.toString());
             //…
             Log.d(TAG, "MESSAGE TO BE SENT: " + returnMessage);
             if(has_outputData){
@@ -458,6 +461,40 @@ public class MessageParser extends Worker {
         return Result.failure();
     }
 
+    //Checks if the user command is valid
+    private boolean checkCommand(String command, ArrayList<String> commands,boolean newUser){
+
+        if (command.length()>1 && !newUser){
+            //Refine the command to remove the starting "." charcter
+            command = command.substring(1);
+            Log.d(TAG, "userCommand: " +command);
+
+
+            for (int i=0; i < commands.size(); i++) {
+                if (command.equals(commands.get(i))) {
+
+                    Log.d(TAG, "userCommand found from commands");
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    //Check if command is a number
+    private boolean isNumber(String command) {
+
+        try {
+            Integer.parseInt(command);
+            Log.d(TAG, "Command IS number");
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    //Used to compile Menu page text
     private ArrayList<String> compileMenu (String position){
         String TAG_CompileMenu = "Worker" + "CompileMenu";
         Log.d(TAG_CompileMenu, "position is " + position + " and max per page is " + gamesPerPage);
@@ -508,11 +545,10 @@ public class MessageParser extends Worker {
 
         return returnValue;
     }
-    public String help (String command){
 
-        return "";
-    }
+    //Game information is compiled and returned
     private ArrayList<String> compileGameInfo(String command, String gamePosition ){
+
         ArrayList<String> returnArray = new ArrayList<>();
         String TAG_gameInfo = "WorkerGameInfo";
         int pos = Integer.parseInt(gamePosition);
@@ -520,7 +556,7 @@ public class MessageParser extends Worker {
         int targetIndex = (pos-1)*gamesPerPage+ind-1;
         String returnString ="";
         String gameName = mLoadAdventureData.GetStoryTitles(context).get(targetIndex);
-        ArrayList<String> gameInfo = new ArrayList<>();
+        ArrayList<String> gameInfo;
         try{
             //gameInfo contents: title, author, length, difficulty, rating and url
             gameInfo = mLoadAdventureData.GetStoryInfo(context,gameName);
@@ -545,19 +581,24 @@ public class MessageParser extends Worker {
 
     }
 
-    private String compileGamePage(String lastPosition,String userCommandPage) {
-        String returnString = "";
-        String pageTitle = mLoadAdventureData.GetStoryHeader(context,lastPosition,userCommandPage);
+
+    //This is used to compile all of the different parts of the game page into a
+    //lastPosition is a the index of the last user activity
+    //storyPage is the page that the text is retrieved from
+    private String compileGamePage(String lastPosition,String storyPage) {
+
+        StringBuilder returnString = new StringBuilder();
+        String pageTitle = mLoadAdventureData.GetStoryHeader(context,lastPosition,storyPage);
         String pageText = mLoadAdventureData.GetStoryText(context,lastPosition,
-                userCommandPage);
+                storyPage);
         ArrayList<String> pageChoices = mLoadAdventureData.GetStoryChoices(context,
-                lastPosition,userCommandPage);
-        returnString = returnString + pageTitle;
-        returnString = returnString + "\n" + pageText;
+                lastPosition,storyPage);
+        returnString.append(pageTitle);
+        returnString.append("\n").append(pageText);
         for (int i = 0; i<pageChoices.size();i++) {
-            returnString = returnString + "\n."+ (i+1) + " - " + pageChoices.get(i);
+            returnString.append("\n.").append(i + 1).append(" - ").append(pageChoices.get(i));
         }
-        return returnString;
+        return returnString.toString();
     }
 
 }

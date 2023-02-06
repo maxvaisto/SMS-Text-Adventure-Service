@@ -124,13 +124,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-        /*mUserViewModel.getAllphoneNumbers().observe(this, users -> {
-            // update UI
-        });
-        */
-
-
     }
 
     //Used to insert a command manually by the user
@@ -161,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
                                 Log.d(TAG, "WorkInfo received: state: " + workInfo.getState());
                                 if (workInfo.getState().equals(SUCCEEDED)){
                                     String message = workInfo.getOutputData().getString(KEY_RETURN_MESSAGE_URI);
-                                    Log.d(TAG, "message: " + message);
+                                    Log.d(TAG, "Message sent!");
                                     mSentSMSMessage.setText(message);
                                 }
 
