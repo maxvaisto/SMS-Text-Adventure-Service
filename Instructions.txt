@@ -1,7 +1,32 @@
+The application works as a server that tracks the adventures of each person who has texted the server with a command. Each user has their own progress within the adventures of the application and only messages from that specific phone number can advance their adventure. The application can receive and respond to messages as long as it is still running. If the application is closed, it will not read old messages to "catch up" with what was sent while it was sent earlier. 
+
 While the application is running any messages from allowed phonenumbers that start with "." are read and interpreted by the application as commands.
 Any message from a phone number that has not sent a command can start playing by sending any message that begins with ".".
 
 Currently allowed phone numbers:
 Starts with {"+3584", "04"}
+
+Currently allowed commands:
+Starts with {"."}
+
+Default commands:
+  ".play" - Starts the selected game
+  ".quit" - Exits the game or the game description.
+  ".back" - Exits the game description or in game goes back to the previous page.
+  ".commands" - lLsts all currently possible commands
+  ".reset" - Resets the currently active games process to the start of the game
+  ".previous" - in the main menu go to the previous page of games.
+  ".next" - In the main menu go to the next page of games.
+  ".about" - Lists application information.
+  ".forget_me" - The application will forget the phone number and treat it as a new user. This does not remove the user game progress.
+  
+Additionally:
+  The page may list several numbers that correspond to in the main menu to text adventures and in game to possible choices of action (will go to next page).
+  e.g {".1",".2",".3",".4"}
+  After the number command is pressed the corresponding game is opened or the adventure jumps to the corresponding page. 
+ 
+  
+
+
 
 
