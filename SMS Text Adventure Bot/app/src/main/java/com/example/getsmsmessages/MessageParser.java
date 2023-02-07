@@ -20,6 +20,7 @@ import androidx.work.WorkerParameters;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 /*
     *****************************************
@@ -99,8 +100,8 @@ public class MessageParser extends Worker {
                 Log.d(TAG, "NEW USER: " + userPhoneNumber);
 
                 //User
-                ArrayList<String> userPreviousGame = new ArrayList<>(Arrays.asList("Menu"));
-                ArrayList<String> userMenuProgress = new ArrayList<>(Arrays.asList("1"));
+                ArrayList<String> userPreviousGame = new ArrayList<>(Collections.singletonList("Menu"));
+                ArrayList<String> userMenuProgress = new ArrayList<>(Collections.singletonList("1"));
 
                 //Insert user to database
                 Log.d(TAG, "Position to be set to:" + userMenuProgress);
@@ -416,10 +417,11 @@ public class MessageParser extends Worker {
                             break;
                         case("about"):
                             returnMessage.append(ABOUT_TEXT);
-
+                            break;
                         //This should never be reached
                         default:
                             returnMessage.append("Something went wrong");
+                            break;
                     }
                 }
             }  else {
