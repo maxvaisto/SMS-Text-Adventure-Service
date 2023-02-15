@@ -28,6 +28,16 @@ import java.util.List;
     *****************************************
 
 
+    MessageParser class
+    * (1) Reads the user message.
+    * (2) Fetches the user data.
+    * (3) Given the users current position and message the users position is updated
+    * if the message if valid (otherwise error message).
+    * (4) Compiles a text response to the user command.
+    * (5) Calls a SendSMS instance to send the response.
+    *
+    * The user phone number is not checked whether it is valid or not in this function
+    * it must be done elsewhere. Also, the validity of the repository contents is also not checked.
 
  */
 public class MessageParser extends Worker {
