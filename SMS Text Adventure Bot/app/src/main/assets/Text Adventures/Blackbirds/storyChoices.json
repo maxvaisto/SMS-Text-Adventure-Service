@@ -1,1 +1,405 @@
-{"page 123":["Wait patiently","Break out"],"page 122":["Hanging cage"],"page 125":["Stay put","Make for the dungeon"],"page 124":["End Game and Leave Comments"],"page 127":["End Game and Leave Comments"],"page 128":["Redding"],"page 77":["Cut your way to Alexander","Retreat to the treeline"],"page 76":["War!"],"page 79":["Back to the garrison"],"page 78":["Axes","Spear"],"page 71":["Go with him"],"page 70":["The war party","Go with him"],"page 73":["Continue"],"page 72":["Go with him"],"page 75":["Continue"],"page 74":["Go with him"],"page 130":["Hero","Gambler"],"page 132":["Epilogue: The Martyr"],"page 131":["Epilogue: The Ways of the New"],"page 112":["Stay","Refuse"],"page 114":["Light appears"],"page 113":["End Game and Leave Comments"],"page 116":["Epilogue: The Last Bondsman"],"page 117":["End Game and Leave Comments"],"page 88":["Wake up"],"page 87":["Sleep"],"page 119":["Hanging cage"],"page 89":["Wake up"],"page 80":["End Game and Leave Comments"],"page 81":["End Game and Leave Comments"],"page 84":["Blackbird healers","Garrison field surgeon"],"page 86":["Talk with E\u0027ffy","Sleep"],"page 85":["Continue"],"page 121":["The dungeon","A tea party"],"page 120":["The dungeon"],"page 6":["The next day"],"page 5":["The next day"],"page 18":["End Game and Leave Comments"],"page 8":["Focus on the crowd","Continue marching"],"page 7":["Focus on the crowd","Continue marching"],"page 2":["Continue"],"page 1":["Continue"],"page 4":["The next day"],"page 3":["Continue"],"page 11":["Voyage"],"page 10":["Voyage"],"page 98":["End Game and Leave Comments"],"page 13":["A frock coat and white gloves"],"page 12":["Pursue the sails","Stay the course"],"page 15":["Pirates!"],"page 9":["Continue marching"],"page 14":["Voyage (cont.)"],"page 17":["End Game and Leave Comments"],"page 16":["Join","Die"],"page 91":["Refuse","Replenish"],"page 90":["The war camp","Terr\u0027ok and the S\u0027umbra"],"page 93":["Refuse","Replenish"],"page 92":["The war camp"],"page 95":["Continue"],"page 94":["The trial","The soldier\u0027s approach"],"page 97":["Path forward"],"page 96":["The trial","The soldier\u0027s approach"],"page 134":["End Game and Leave Comments"],"page 29":["Take stock","Await orders"],"page 135":["End Game and Leave Comments"],"page 22":["Lionel","Voyage (cont.)"],"page 21":["Bastus","Lionel","Voyage (cont.)"],"page 24":["The New World"],"page 23":["Voyage (cont.)"],"page 26":["The New World"],"page 25":["Voyage (cont.)"],"page 28":["The New World"],"page 27":["Voyage (cont.)"],"page 0":["“These posters are getting worse everyday.”","“I’d prefer to be on my own for now.”","“The billboard is a better view than you lot.”"],"page 33":["Tavern","Brothel","Training"],"page 32":["Explore Frontrunner\u0027s Camp","Rest until receiving orders"],"page 35":["Duty calls"],"page 37":["Duty calls"],"page 36":["Duty calls"],"page 39":["Continue"],"page 38":["Continue"],"page 31":["Explore Frontrunner\u0027s Camp","Rest until receiving orders"],"page 30":["Await orders"],"page 44":["The ruins"],"page 43":["Sleep"],"page 46":["Follow orders"],"page 45":["Speak your mind","Follow orders"],"page 48":["Continue"],"page 47":["End Game and Leave Comments"],"page 40":["Continue"],"page 42":["The ruins"],"page 41":["Sleep","\"Campfire\" story"],"page 101":["..."],"page 100":["Amir\u0027sshan, chieftain of chieftains"],"page 103":["Continue"],"page 102":["..."],"page 105":["Knock her out","Show mercy"],"page 104":["Take the offensive","Attempt to counter"],"page 107":["The gauntlet of the gods"],"page 106":["Knock her out","Show mercy"],"page 55":["Wake"],"page 109":["The gauntlet of the gods"],"page 54":["..."],"page 108":["End Game and Leave Comments"],"page 57":["Leave the halls"],"page 56":["Wake"],"page 59":["Make conversation","The Magda garrison"],"page 58":["Comply with Magda","Rescue attempt"],"page 51":["Continue"],"page 50":["Longsword","Flintlock"],"page 53":["..."],"page 52":["Continue"],"page 110":["End Game and Leave Comments"],"page 66":["Blackbird war party"],"page 65":["The Magda garrison"],"page 68":["Go with him","The ramparts","The war party"],"page 67":["Blackbird war party"],"page 69":["Continue"],"page 60":["Longsword","Flintlock"],"page 62":["End Game and Leave Comments"],"page 61":["End Game and Leave Comments"]}
+{
+  "page 123": [
+    "Wait patiently",
+    "Break out"
+  ],
+  "page 122": [
+    "Hanging cage"
+  ],
+  "page 125": [
+    "Stay put",
+    "Make for the dungeon"
+  ],
+  "page 124": [
+    "End Game and Leave Comments"
+  ],
+  "page 127": [
+    "End Game and Leave Comments"
+  ],
+  "page 128": [
+    "Redding"
+  ],
+  "page 77": [
+    "Cut your way to Alexander",
+    "Retreat to the treeline"
+  ],
+  "page 76": [
+    "War!"
+  ],
+  "page 79": [
+    "Back to the garrison"
+  ],
+  "page 78": [
+    "Axes",
+    "Spear"
+  ],
+  "page 71": [
+    "Go with him"
+  ],
+  "page 70": [
+    "The war party",
+    "Go with him"
+  ],
+  "page 73": [
+    "Continue"
+  ],
+  "page 72": [
+    "Go with him"
+  ],
+  "page 75": [
+    "Continue"
+  ],
+  "page 74": [
+    "Go with him"
+  ],
+  "page 130": [
+    "Hero",
+    "Gambler"
+  ],
+  "page 132": [
+    "Epilogue: The Martyr"
+  ],
+  "page 131": [
+    "Epilogue: The Ways of the New"
+  ],
+  "page 112": [
+    "Stay",
+    "Refuse"
+  ],
+  "page 114": [
+    "Light appears"
+  ],
+  "page 113": [
+    "End Game and Leave Comments"
+  ],
+  "page 116": [
+    "Epilogue: The Last Bondsman"
+  ],
+  "page 117": [
+    "End Game and Leave Comments"
+  ],
+  "page 88": [
+    "Wake up"
+  ],
+  "page 87": [
+    "Sleep"
+  ],
+  "page 119": [
+    "Hanging cage"
+  ],
+  "page 89": [
+    "Wake up"
+  ],
+  "page 80": [
+    "End Game and Leave Comments"
+  ],
+  "page 81": [
+    "End Game and Leave Comments"
+  ],
+  "page 84": [
+    "Blackbird healers",
+    "Garrison field surgeon"
+  ],
+  "page 86": [
+    "Talk with E\u0027ffy",
+    "Sleep"
+  ],
+  "page 85": [
+    "Continue"
+  ],
+  "page 121": [
+    "The dungeon",
+    "A tea party"
+  ],
+  "page 120": [
+    "The dungeon"
+  ],
+  "page 6": [
+    "The next day"
+  ],
+  "page 5": [
+    "The next day"
+  ],
+  "page 18": [
+    "End Game and Leave Comments"
+  ],
+  "page 8": [
+    "Focus on the crowd",
+    "Continue marching"
+  ],
+  "page 7": [
+    "Focus on the crowd",
+    "Continue marching"
+  ],
+  "page 2": [
+    "Continue"
+  ],
+  "page 1": [
+    "Continue"
+  ],
+  "page 4": [
+    "The next day"
+  ],
+  "page 3": [
+    "Continue"
+  ],
+  "page 11": [
+    "Voyage"
+  ],
+  "page 10": [
+    "Voyage"
+  ],
+  "page 98": [
+    "End Game and Leave Comments"
+  ],
+  "page 13": [
+    "A frock coat and white gloves"
+  ],
+  "page 12": [
+    "Pursue the sails",
+    "Stay the course"
+  ],
+  "page 15": [
+    "Pirates!"
+  ],
+  "page 9": [
+    "Continue marching"
+  ],
+  "page 14": [
+    "Voyage (cont.)"
+  ],
+  "page 17": [
+    "End Game and Leave Comments"
+  ],
+  "page 16": [
+    "Join",
+    "Die"
+  ],
+  "page 91": [
+    "Refuse",
+    "Replenish"
+  ],
+  "page 90": [
+    "The war camp",
+    "Terr\u0027ok and the S\u0027umbra"
+  ],
+  "page 93": [
+    "Refuse",
+    "Replenish"
+  ],
+  "page 92": [
+    "The war camp"
+  ],
+  "page 95": [
+    "Continue"
+  ],
+  "page 94": [
+    "The trial",
+    "The soldier\u0027s approach"
+  ],
+  "page 97": [
+    "Path forward"
+  ],
+  "page 96": [
+    "The trial",
+    "The soldier\u0027s approach"
+  ],
+  "page 134": [
+    "End Game and Leave Comments"
+  ],
+  "page 29": [
+    "Take stock",
+    "Await orders"
+  ],
+  "page 135": [
+    "End Game and Leave Comments"
+  ],
+  "page 22": [
+    "Lionel",
+    "Voyage (cont.)"
+  ],
+  "page 21": [
+    "Bastus",
+    "Lionel",
+    "Voyage (cont.)"
+  ],
+  "page 24": [
+    "The New World"
+  ],
+  "page 23": [
+    "Voyage (cont.)"
+  ],
+  "page 26": [
+    "The New World"
+  ],
+  "page 25": [
+    "Voyage (cont.)"
+  ],
+  "page 28": [
+    "The New World"
+  ],
+  "page 27": [
+    "Voyage (cont.)"
+  ],
+  "page 0": [
+    "“These posters are getting worse everyday.”",
+    "“I’d prefer to be on my own for now.”",
+    "“The billboard is a better view than you lot.”"
+  ],
+  "page 33": [
+    "Tavern",
+    "Brothel",
+    "Training"
+  ],
+  "page 32": [
+    "Explore Frontrunner\u0027s Camp",
+    "Rest until receiving orders"
+  ],
+  "page 35": [
+    "Duty calls"
+  ],
+  "page 37": [
+    "Duty calls"
+  ],
+  "page 36": [
+    "Duty calls"
+  ],
+  "page 39": [
+    "Continue"
+  ],
+  "page 38": [
+    "Continue"
+  ],
+  "page 31": [
+    "Explore Frontrunner\u0027s Camp",
+    "Rest until receiving orders"
+  ],
+  "page 30": [
+    "Await orders"
+  ],
+  "page 44": [
+    "The ruins"
+  ],
+  "page 43": [
+    "Sleep"
+  ],
+  "page 46": [
+    "Follow orders"
+  ],
+  "page 45": [
+    "Speak your mind",
+    "Follow orders"
+  ],
+  "page 48": [
+    "Continue"
+  ],
+  "page 47": [
+    "End Game and Leave Comments"
+  ],
+  "page 40": [
+    "Continue"
+  ],
+  "page 42": [
+    "The ruins"
+  ],
+  "page 41": [
+    "Sleep",
+    "\"Campfire\" story"
+  ],
+  "page 101": [
+    "..."
+  ],
+  "page 100": [
+    "Amir\u0027sshan, chieftain of chieftains"
+  ],
+  "page 103": [
+    "Continue"
+  ],
+  "page 102": [
+    "..."
+  ],
+  "page 105": [
+    "Knock her out",
+    "Show mercy"
+  ],
+  "page 104": [
+    "Take the offensive",
+    "Attempt to counter"
+  ],
+  "page 107": [
+    "The gauntlet of the gods"
+  ],
+  "page 106": [
+    "Knock her out",
+    "Show mercy"
+  ],
+  "page 55": [
+    "Wake"
+  ],
+  "page 109": [
+    "The gauntlet of the gods"
+  ],
+  "page 54": [
+    "..."
+  ],
+  "page 108": [
+    "End Game and Leave Comments"
+  ],
+  "page 57": [
+    "Leave the halls"
+  ],
+  "page 56": [
+    "Wake"
+  ],
+  "page 59": [
+    "Make conversation",
+    "The Magda garrison"
+  ],
+  "page 58": [
+    "Comply with Magda",
+    "Rescue attempt"
+  ],
+  "page 51": [
+    "Continue"
+  ],
+  "page 50": [
+    "Longsword",
+    "Flintlock"
+  ],
+  "page 53": [
+    "..."
+  ],
+  "page 52": [
+    "Continue"
+  ],
+  "page 110": [
+    "End Game and Leave Comments"
+  ],
+  "page 66": [
+    "Blackbird war party"
+  ],
+  "page 65": [
+    "The Magda garrison"
+  ],
+  "page 68": [
+    "Go with him",
+    "The ramparts",
+    "The war party"
+  ],
+  "page 67": [
+    "Blackbird war party"
+  ],
+  "page 69": [
+    "Continue"
+  ],
+  "page 60": [
+    "Longsword",
+    "Flintlock"
+  ],
+  "page 62": [
+    "End Game and Leave Comments"
+  ],
+  "page 61": [
+    "End Game and Leave Comments"
+  ]
+}

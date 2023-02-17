@@ -3,6 +3,7 @@ package com.example.getsmsmessages;
 
 import static com.example.getsmsmessages.Constants.KEY_MESSAGE_URI;
 import static com.example.getsmsmessages.Constants.KEY_SENDER_URI;
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import android.telephony.SmsMessage;
 import android.util.Log;
 import android.widget.Toast;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.work.Data;
@@ -17,18 +19,20 @@ import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 
 import java.util.List;
+
 //SmsReceiver is used to receive and check all of the user messages to see
 // if they contain the components to be interpreted as a potential message
 public class SmsReceiver extends BroadcastReceiver {
 
     private static final String SMS_RECEIVED = "android.provider.Telephony.SMS_RECEIVED";
     private final MutableLiveData<List<String>> mData;
-    public LiveData<List<String>> getData() {
-        return mData;
+
+    public SmsReceiver(MutableLiveData<List<String>> mMutableMessage) {
+        mData = mMutableMessage;
     }
 
-    public SmsReceiver (MutableLiveData<List<String>> mMutableMessage) {
-        mData = mMutableMessage;
+    public LiveData<List<String>> getData() {
+        return mData;
     }
 
     //We have our own chain of action that will take place after a message is received
@@ -38,7 +42,7 @@ public class SmsReceiver extends BroadcastReceiver {
 
         //Check if the message is not empty
         if (intentAction != null) {
-            Log.d("action_name",intentAction );
+            Log.d("action_name", intentAction);
 
             //Create default toastMessage which informs of an error
             String toastMessage = context.getString(R.string.unknown_intent);

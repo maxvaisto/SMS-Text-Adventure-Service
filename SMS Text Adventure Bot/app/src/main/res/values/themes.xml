@@ -14,10 +14,12 @@
 
         <!-- Customize your theme here. -->
     </style>
+
     <style name="Theme.GetSMSMessages.content_main" parent="Theme.GetSMSMessages">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
     <style name="Theme.GetSMSMessages.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

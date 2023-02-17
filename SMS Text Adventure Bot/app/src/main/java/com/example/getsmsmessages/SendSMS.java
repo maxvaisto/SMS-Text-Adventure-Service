@@ -16,7 +16,7 @@ import java.util.ArrayList;
  */
 public class SendSMS {
 
-    private static final String TAG="SMS_OUT";
+    private static final String TAG = "SMS_OUT";
 
     //Can be used to send a single message
     public void sendSMS(String phoneNo, String msg) {
@@ -25,11 +25,11 @@ public class SendSMS {
             PendingIntent sentPI;
             String SENT = "SMS_SENT";
             sentPI = PendingIntent.getBroadcast(MainActivity.giveContext(),
-                    0,new Intent(SENT), 0);
+                    0, new Intent(SENT), 0);
             smsManager.sendTextMessage(phoneNo, null, msg, sentPI, null);
-            Log.d("SMS_CHECK","MESSAGE: " + msg + " SENT!");
+            Log.d("SMS_CHECK", "MESSAGE: " + msg + " SENT!");
         } catch (Exception ex) {
-            Log.e("SMS_CHECK","MESSAGE NOT SENT!");
+            Log.e("SMS_CHECK", "MESSAGE NOT SENT!");
             ex.printStackTrace();
         }
     }
@@ -39,11 +39,11 @@ public class SendSMS {
         try {
             SmsManager smsManager = SmsManager.getDefault();
             ArrayList<String> parts = smsManager.divideMessage(message);
-            smsManager.sendMultipartTextMessage(phoneNo,null, parts, null, null);
-            Log.d(TAG,"ALL SENT!") ;
+            smsManager.sendMultipartTextMessage(phoneNo, null, parts, null, null);
+            Log.d(TAG, "ALL SENT!");
 
         } catch (Exception ex) {
-            Log.e(TAG,"MESSAGE NOT SENT!");
+            Log.e(TAG, "MESSAGE NOT SENT!");
             ex.printStackTrace();
         }
     }

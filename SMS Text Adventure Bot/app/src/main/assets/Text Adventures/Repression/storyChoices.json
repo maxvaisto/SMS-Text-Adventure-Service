@@ -1,1 +1,356 @@
-{"page 123":["Enter the school through the gym","Attempt to stop escapees"],"page 122":["End Game and Leave Comments"],"page 125":["Head towards a classroom","Try to escape now"],"page 124":["End Game and Leave Comments"],"page 127":["You know what to do","It\u0027s all for her"],"page 126":["End Game and Leave Comments"],"page 129":["Let\u0027s finish it","Surrender"],"page 128":["End Game and Leave Comments"],"page 76":["End Game and Leave Comments"],"page 79":["Find some place to make out","Take her home"],"page 71":["End Game and Leave Comments"],"page 70":["Drive her home","Drive her \"home\""],"page 72":["End Game and Leave Comments"],"page 75":["End Game and Leave Comments"],"page 130":["End Game and Leave Comments"],"page 132":["End Game and Leave Comments"],"page 131":["End Game and Leave Comments"],"page 112":["End Game and Leave Comments"],"page 113":["End Game and Leave Comments"],"page 116":["End Game and Leave Comments"],"page 117":["Go meet your sister","Go out the window"],"page 119":["Go to school","End it now"],"page 80":["Get agressive","Respect her wishes"],"page 82":["End Game and Leave Comments"],"page 81":["End Game and Leave Comments"],"page 86":["End Game and Leave Comments"],"page 85":["End Game and Leave Comments"],"page 121":["Dispense Mayhem","Dispense Justice"],"page 120":["Listen to your sister","Continue out the window"],"page 6":["Go to class","Help Aaron"],"page 19":["End Game and Leave Comments"],"page 145":["End Game and Leave Comments"],"page 5":["Help Aaron","Ignore him"],"page 18":["End Game and Leave Comments"],"page 144":["End Game and Leave Comments"],"page 8":["Continue with your work","Help Jessica"],"page 7":["Attempt to reach out to her","Go to school"],"page 2":["Stay in bed","Get ready for her"],"page 149":["End Game and Leave Comments"],"page 1":["Sit down, eat and stay out of it","Side with Mom","Side with sis"],"page 148":["End Game and Leave Comments"],"page 4":["Head to school","Ask Mom to drive you"],"page 3":["Head to school","Go check on Mom"],"page 11":["End Game and Leave Comments"],"page 99":["End Game and Leave Comments"],"page 10":["Finish eating and go to class","Confront Butch"],"page 13":["End Game and Leave Comments"],"page 12":["Ignore him","Punch him","Tell him you could care less about Aaron"],"page 15":["End Game and Leave Comments"],"page 9":["End Game and Leave Comments"],"page 14":["Tell her you\u0027ll relay the message to Mom","Tell her that Butch has been cheating on her again"],"page 17":["Do as Mom says","Disobey Mom"],"page 16":["End Game and Leave Comments"],"page 91":["End Game and Leave Comments"],"page 92":["Help Jessica","Ignore Jessica"],"page 95":["Go talk to your sister","Ignore her and go home"],"page 94":["Take her home","Go to the movies"],"page 97":["End Game and Leave Comments"],"page 96":["Introduce Jessica","Beg for Mom\u0027s forgiveness"],"page 29":["Attempt to reach out to him","Ignore him"],"page 20":["End Game and Leave Comments"],"page 0":["Go downstairs","Stay in bed"],"page 141":["End Game and Leave Comments"],"page 140":["Try to hide it","Leave it where it is"],"page 143":["Run","Wait"],"page 142":["Demonstrate your power again","Try to place the body back and act like nothing has happend"],"page 33":["End Game and Leave Comments"],"page 32":["Confront Butch","Keep quiet"],"page 35":["Say how happy you are","Group hug"],"page 34":["Stay","Let Mom and sis work it out themselves"],"page 37":["End Game and Leave Comments"],"page 36":["End Game and Leave Comments"],"page 38":["End Game and Leave Comments"],"page 31":["End Game and Leave Comments"],"page 30":["End Game and Leave Comments"],"page 46":["End Game and Leave Comments"],"page 45":["Help Jessica","Ignore her"],"page 48":["Confront Butch","Keep quiet"],"page 47":["Confront Butch","Keep quiet"],"page 49":["Argue back with her","Simmer and just take it"],"page 100":["End Game and Leave Comments"],"page 103":["End Game and Leave Comments"],"page 104":["Go to bed","Insist on talking more"],"page 107":["Watch TV","Follow her"],"page 106":["End Game and Leave Comments"],"page 55":["End Game and Leave Comments"],"page 109":["End Game and Leave Comments"],"page 56":["End Game and Leave Comments"],"page 59":["End Game and Leave Comments"],"page 51":["End Game and Leave Comments"],"page 50":["Go home","Stay out"],"page 52":["End Game and Leave Comments"],"page 110":["Go to sleep","Take it one step further"],"page 65":["Party time!","Go find something else to do"],"page 68":["Go to the park","Go to her house"],"page 67":["Follow her","Stay put"],"page 69":["Follow her","Go do something else"],"page 60":["Stick around","Go home"],"page 62":["Go home","Stay out"],"page 64":["End Game and Leave Comments"],"page 63":["End Game and Leave Comments"]}
+{
+  "page 123": [
+    "Enter the school through the gym",
+    "Attempt to stop escapees"
+  ],
+  "page 122": [
+    "End Game and Leave Comments"
+  ],
+  "page 125": [
+    "Head towards a classroom",
+    "Try to escape now"
+  ],
+  "page 124": [
+    "End Game and Leave Comments"
+  ],
+  "page 127": [
+    "You know what to do",
+    "It\u0027s all for her"
+  ],
+  "page 126": [
+    "End Game and Leave Comments"
+  ],
+  "page 129": [
+    "Let\u0027s finish it",
+    "Surrender"
+  ],
+  "page 128": [
+    "End Game and Leave Comments"
+  ],
+  "page 76": [
+    "End Game and Leave Comments"
+  ],
+  "page 79": [
+    "Find some place to make out",
+    "Take her home"
+  ],
+  "page 71": [
+    "End Game and Leave Comments"
+  ],
+  "page 70": [
+    "Drive her home",
+    "Drive her \"home\""
+  ],
+  "page 72": [
+    "End Game and Leave Comments"
+  ],
+  "page 75": [
+    "End Game and Leave Comments"
+  ],
+  "page 130": [
+    "End Game and Leave Comments"
+  ],
+  "page 132": [
+    "End Game and Leave Comments"
+  ],
+  "page 131": [
+    "End Game and Leave Comments"
+  ],
+  "page 112": [
+    "End Game and Leave Comments"
+  ],
+  "page 113": [
+    "End Game and Leave Comments"
+  ],
+  "page 116": [
+    "End Game and Leave Comments"
+  ],
+  "page 117": [
+    "Go meet your sister",
+    "Go out the window"
+  ],
+  "page 119": [
+    "Go to school",
+    "End it now"
+  ],
+  "page 80": [
+    "Get agressive",
+    "Respect her wishes"
+  ],
+  "page 82": [
+    "End Game and Leave Comments"
+  ],
+  "page 81": [
+    "End Game and Leave Comments"
+  ],
+  "page 86": [
+    "End Game and Leave Comments"
+  ],
+  "page 85": [
+    "End Game and Leave Comments"
+  ],
+  "page 121": [
+    "Dispense Mayhem",
+    "Dispense Justice"
+  ],
+  "page 120": [
+    "Listen to your sister",
+    "Continue out the window"
+  ],
+  "page 6": [
+    "Go to class",
+    "Help Aaron"
+  ],
+  "page 19": [
+    "End Game and Leave Comments"
+  ],
+  "page 145": [
+    "End Game and Leave Comments"
+  ],
+  "page 5": [
+    "Help Aaron",
+    "Ignore him"
+  ],
+  "page 18": [
+    "End Game and Leave Comments"
+  ],
+  "page 144": [
+    "End Game and Leave Comments"
+  ],
+  "page 8": [
+    "Continue with your work",
+    "Help Jessica"
+  ],
+  "page 7": [
+    "Attempt to reach out to her",
+    "Go to school"
+  ],
+  "page 2": [
+    "Stay in bed",
+    "Get ready for her"
+  ],
+  "page 149": [
+    "End Game and Leave Comments"
+  ],
+  "page 1": [
+    "Sit down, eat and stay out of it",
+    "Side with Mom",
+    "Side with sis"
+  ],
+  "page 148": [
+    "End Game and Leave Comments"
+  ],
+  "page 4": [
+    "Head to school",
+    "Ask Mom to drive you"
+  ],
+  "page 3": [
+    "Head to school",
+    "Go check on Mom"
+  ],
+  "page 11": [
+    "End Game and Leave Comments"
+  ],
+  "page 99": [
+    "End Game and Leave Comments"
+  ],
+  "page 10": [
+    "Finish eating and go to class",
+    "Confront Butch"
+  ],
+  "page 13": [
+    "End Game and Leave Comments"
+  ],
+  "page 12": [
+    "Ignore him",
+    "Punch him",
+    "Tell him you could care less about Aaron"
+  ],
+  "page 15": [
+    "End Game and Leave Comments"
+  ],
+  "page 9": [
+    "End Game and Leave Comments"
+  ],
+  "page 14": [
+    "Tell her you\u0027ll relay the message to Mom",
+    "Tell her that Butch has been cheating on her again"
+  ],
+  "page 17": [
+    "Do as Mom says",
+    "Disobey Mom"
+  ],
+  "page 16": [
+    "End Game and Leave Comments"
+  ],
+  "page 91": [
+    "End Game and Leave Comments"
+  ],
+  "page 92": [
+    "Help Jessica",
+    "Ignore Jessica"
+  ],
+  "page 95": [
+    "Go talk to your sister",
+    "Ignore her and go home"
+  ],
+  "page 94": [
+    "Take her home",
+    "Go to the movies"
+  ],
+  "page 97": [
+    "End Game and Leave Comments"
+  ],
+  "page 96": [
+    "Introduce Jessica",
+    "Beg for Mom\u0027s forgiveness"
+  ],
+  "page 29": [
+    "Attempt to reach out to him",
+    "Ignore him"
+  ],
+  "page 20": [
+    "End Game and Leave Comments"
+  ],
+  "page 0": [
+    "Go downstairs",
+    "Stay in bed"
+  ],
+  "page 141": [
+    "End Game and Leave Comments"
+  ],
+  "page 140": [
+    "Try to hide it",
+    "Leave it where it is"
+  ],
+  "page 143": [
+    "Run",
+    "Wait"
+  ],
+  "page 142": [
+    "Demonstrate your power again",
+    "Try to place the body back and act like nothing has happend"
+  ],
+  "page 33": [
+    "End Game and Leave Comments"
+  ],
+  "page 32": [
+    "Confront Butch",
+    "Keep quiet"
+  ],
+  "page 35": [
+    "Say how happy you are",
+    "Group hug"
+  ],
+  "page 34": [
+    "Stay",
+    "Let Mom and sis work it out themselves"
+  ],
+  "page 37": [
+    "End Game and Leave Comments"
+  ],
+  "page 36": [
+    "End Game and Leave Comments"
+  ],
+  "page 38": [
+    "End Game and Leave Comments"
+  ],
+  "page 31": [
+    "End Game and Leave Comments"
+  ],
+  "page 30": [
+    "End Game and Leave Comments"
+  ],
+  "page 46": [
+    "End Game and Leave Comments"
+  ],
+  "page 45": [
+    "Help Jessica",
+    "Ignore her"
+  ],
+  "page 48": [
+    "Confront Butch",
+    "Keep quiet"
+  ],
+  "page 47": [
+    "Confront Butch",
+    "Keep quiet"
+  ],
+  "page 49": [
+    "Argue back with her",
+    "Simmer and just take it"
+  ],
+  "page 100": [
+    "End Game and Leave Comments"
+  ],
+  "page 103": [
+    "End Game and Leave Comments"
+  ],
+  "page 104": [
+    "Go to bed",
+    "Insist on talking more"
+  ],
+  "page 107": [
+    "Watch TV",
+    "Follow her"
+  ],
+  "page 106": [
+    "End Game and Leave Comments"
+  ],
+  "page 55": [
+    "End Game and Leave Comments"
+  ],
+  "page 109": [
+    "End Game and Leave Comments"
+  ],
+  "page 56": [
+    "End Game and Leave Comments"
+  ],
+  "page 59": [
+    "End Game and Leave Comments"
+  ],
+  "page 51": [
+    "End Game and Leave Comments"
+  ],
+  "page 50": [
+    "Go home",
+    "Stay out"
+  ],
+  "page 52": [
+    "End Game and Leave Comments"
+  ],
+  "page 110": [
+    "Go to sleep",
+    "Take it one step further"
+  ],
+  "page 65": [
+    "Party time!",
+    "Go find something else to do"
+  ],
+  "page 68": [
+    "Go to the park",
+    "Go to her house"
+  ],
+  "page 67": [
+    "Follow her",
+    "Stay put"
+  ],
+  "page 69": [
+    "Follow her",
+    "Go do something else"
+  ],
+  "page 60": [
+    "Stick around",
+    "Go home"
+  ],
+  "page 62": [
+    "Go home",
+    "Stay out"
+  ],
+  "page 64": [
+    "End Game and Leave Comments"
+  ],
+  "page 63": [
+    "End Game and Leave Comments"
+  ]
+}

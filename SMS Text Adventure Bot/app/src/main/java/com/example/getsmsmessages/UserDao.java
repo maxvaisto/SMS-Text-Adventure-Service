@@ -5,6 +5,7 @@ import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+
 import java.util.List;
 
 //UserDao is used to connect the SQL databases with the application repository
@@ -13,10 +14,9 @@ import java.util.List;
 public interface UserDao {
 
 
-
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertUser(User ... users);
+    void insertUser(User... users);
+
     //USER PART
     @Query("SELECT DISTINCT phoneNumber FROM user_table")
     LiveData<List<String>> getAllPhoneNumbers();

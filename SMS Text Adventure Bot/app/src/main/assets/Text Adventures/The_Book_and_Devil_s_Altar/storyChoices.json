@@ -1,1 +1,256 @@
-{"page 33":["Yes","No"],"page 77":["Epilogue"],"page 32":["Drift to sleep"],"page 76":["End Game and Leave Comments"],"page 35":["Search for Katia","Press on"],"page 34":["Free them","Leave them"],"page 78":["Epilogue"],"page 37":["Continue"],"page 36":["Continue"],"page 39":["Search for Katia","Press on"],"page 38":["Search for Katia","Press on"],"page 70":["End Game and Leave Comments"],"page 73":["Aftermath"],"page 72":["Aftermath"],"page 31":["Yes","No"],"page 75":["Epilogue"],"page 74":["Aftermath"],"page 44":["Leave your foot where it is","Break for the pedestal"],"page 43":["Shoot","Hold back"],"page 46":["End Game and Leave Comments"],"page 45":["End Game and Leave Comments"],"page 49":["End Game and Leave Comments"],"page 40":["Press on"],"page 42":["Up","Down"],"page 41":["Up","Down"],"page 6":["Richter"],"page 19":["Search Richter"],"page 5":["Jaina","Richter"],"page 18":["Search the man","Search Richter"],"page 8":["Go with them","Question"],"page 7":["Search the man","Search Richter"],"page 2":["Sunrise"],"page 1":["Tell Katia you\u0027re leaving","Slip out unnoticed"],"page 4":["Maxx","Jaina","Richter"],"page 3":["Morning"],"page 11":["Maxx","Jaina","Richter"],"page 55":["End Game and Leave Comments"],"page 10":["Go with them"],"page 54":["Epilogue: Still Breathing, Yet."],"page 13":["Richter"],"page 57":["End Game and Leave Comments"],"page 12":["Richter"],"page 15":["Richter"],"page 59":["Jaina"],"page 9":["Maxx","Jaina","Richter"],"page 14":["Search the man","Search Richter"],"page 17":["Richter"],"page 16":["Search the man","Search Richter"],"page 50":["Kill him","Leave him chained"],"page 53":["Katia","Jaina"],"page 52":["Run","Reach out"],"page 22":["Lie","Truth"],"page 66":["Epilogue: The Siren Song"],"page 21":["Seek out Lord Tiras","Examine the pouch","Meanwhile"],"page 65":["Closure","Freedom","Redemption"],"page 24":["Seek out Lord Tiras","Examine the pouch"],"page 68":["Closure","Freedom","Redemption"],"page 23":["Drift to sleep","Speak with Katia"],"page 67":["Pride","Humility"],"page 26":["Drift to sleep","Speak with Katia"],"page 25":["Lie","Truth"],"page 69":["Epilogue: The Siren Song"],"page 28":["End Game and Leave Comments"],"page 27":["End Game and Leave Comments"],"page 60":["Brace yourself","Tackle Katia out of the way"],"page 62":["Pride","Humility","Katia (reality)"],"page 61":["Brace yourself","Tackle Katia out of the way"],"page 20":["Seek out Lord Tiras","Examine the pouch","Meanwhile"],"page 63":["End Game and Leave Comments"],"page 0":["The Book and Devil\u0027s Altar"]}
+{
+  "page 33": [
+    "Yes",
+    "No"
+  ],
+  "page 77": [
+    "Epilogue"
+  ],
+  "page 32": [
+    "Drift to sleep"
+  ],
+  "page 76": [
+    "End Game and Leave Comments"
+  ],
+  "page 35": [
+    "Search for Katia",
+    "Press on"
+  ],
+  "page 34": [
+    "Free them",
+    "Leave them"
+  ],
+  "page 78": [
+    "Epilogue"
+  ],
+  "page 37": [
+    "Continue"
+  ],
+  "page 36": [
+    "Continue"
+  ],
+  "page 39": [
+    "Search for Katia",
+    "Press on"
+  ],
+  "page 38": [
+    "Search for Katia",
+    "Press on"
+  ],
+  "page 70": [
+    "End Game and Leave Comments"
+  ],
+  "page 73": [
+    "Aftermath"
+  ],
+  "page 72": [
+    "Aftermath"
+  ],
+  "page 31": [
+    "Yes",
+    "No"
+  ],
+  "page 75": [
+    "Epilogue"
+  ],
+  "page 74": [
+    "Aftermath"
+  ],
+  "page 44": [
+    "Leave your foot where it is",
+    "Break for the pedestal"
+  ],
+  "page 43": [
+    "Shoot",
+    "Hold back"
+  ],
+  "page 46": [
+    "End Game and Leave Comments"
+  ],
+  "page 45": [
+    "End Game and Leave Comments"
+  ],
+  "page 49": [
+    "End Game and Leave Comments"
+  ],
+  "page 40": [
+    "Press on"
+  ],
+  "page 42": [
+    "Up",
+    "Down"
+  ],
+  "page 41": [
+    "Up",
+    "Down"
+  ],
+  "page 6": [
+    "Richter"
+  ],
+  "page 19": [
+    "Search Richter"
+  ],
+  "page 5": [
+    "Jaina",
+    "Richter"
+  ],
+  "page 18": [
+    "Search the man",
+    "Search Richter"
+  ],
+  "page 8": [
+    "Go with them",
+    "Question"
+  ],
+  "page 7": [
+    "Search the man",
+    "Search Richter"
+  ],
+  "page 2": [
+    "Sunrise"
+  ],
+  "page 1": [
+    "Tell Katia you\u0027re leaving",
+    "Slip out unnoticed"
+  ],
+  "page 4": [
+    "Maxx",
+    "Jaina",
+    "Richter"
+  ],
+  "page 3": [
+    "Morning"
+  ],
+  "page 11": [
+    "Maxx",
+    "Jaina",
+    "Richter"
+  ],
+  "page 55": [
+    "End Game and Leave Comments"
+  ],
+  "page 10": [
+    "Go with them"
+  ],
+  "page 54": [
+    "Epilogue: Still Breathing, Yet."
+  ],
+  "page 13": [
+    "Richter"
+  ],
+  "page 57": [
+    "End Game and Leave Comments"
+  ],
+  "page 12": [
+    "Richter"
+  ],
+  "page 15": [
+    "Richter"
+  ],
+  "page 59": [
+    "Jaina"
+  ],
+  "page 9": [
+    "Maxx",
+    "Jaina",
+    "Richter"
+  ],
+  "page 14": [
+    "Search the man",
+    "Search Richter"
+  ],
+  "page 17": [
+    "Richter"
+  ],
+  "page 16": [
+    "Search the man",
+    "Search Richter"
+  ],
+  "page 50": [
+    "Kill him",
+    "Leave him chained"
+  ],
+  "page 53": [
+    "Katia",
+    "Jaina"
+  ],
+  "page 52": [
+    "Run",
+    "Reach out"
+  ],
+  "page 22": [
+    "Lie",
+    "Truth"
+  ],
+  "page 66": [
+    "Epilogue: The Siren Song"
+  ],
+  "page 21": [
+    "Seek out Lord Tiras",
+    "Examine the pouch",
+    "Meanwhile"
+  ],
+  "page 65": [
+    "Closure",
+    "Freedom",
+    "Redemption"
+  ],
+  "page 24": [
+    "Seek out Lord Tiras",
+    "Examine the pouch"
+  ],
+  "page 68": [
+    "Closure",
+    "Freedom",
+    "Redemption"
+  ],
+  "page 23": [
+    "Drift to sleep",
+    "Speak with Katia"
+  ],
+  "page 67": [
+    "Pride",
+    "Humility"
+  ],
+  "page 26": [
+    "Drift to sleep",
+    "Speak with Katia"
+  ],
+  "page 25": [
+    "Lie",
+    "Truth"
+  ],
+  "page 69": [
+    "Epilogue: The Siren Song"
+  ],
+  "page 28": [
+    "End Game and Leave Comments"
+  ],
+  "page 27": [
+    "End Game and Leave Comments"
+  ],
+  "page 60": [
+    "Brace yourself",
+    "Tackle Katia out of the way"
+  ],
+  "page 62": [
+    "Pride",
+    "Humility",
+    "Katia (reality)"
+  ],
+  "page 61": [
+    "Brace yourself",
+    "Tackle Katia out of the way"
+  ],
+  "page 20": [
+    "Seek out Lord Tiras",
+    "Examine the pouch",
+    "Meanwhile"
+  ],
+  "page 63": [
+    "End Game and Leave Comments"
+  ],
+  "page 0": [
+    "The Book and Devil\u0027s Altar"
+  ]
+}

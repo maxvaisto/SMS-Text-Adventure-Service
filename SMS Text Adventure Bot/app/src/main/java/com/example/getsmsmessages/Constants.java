@@ -1,4 +1,5 @@
 package com.example.getsmsmessages;
+
 //This file contains all of the strings used in java code
 public class Constants {
 
@@ -38,6 +39,7 @@ public class Constants {
             + " and runs on Java and SQLite";
 
 
-    private Constants() {}
+    private Constants() {
+    }
 
 }

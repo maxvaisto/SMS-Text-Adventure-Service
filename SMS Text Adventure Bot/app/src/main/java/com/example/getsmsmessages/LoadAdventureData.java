@@ -32,7 +32,8 @@ public class LoadAdventureData {
 
     //Used to get the filepath of the application
     private Context mContext;
-    public LoadAdventureData(Context context){
+
+    public LoadAdventureData(Context context) {
         mAssetManager = context.getAssets();
     }
 
@@ -58,7 +59,7 @@ public class LoadAdventureData {
 
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Log.e(TAG,"Error while forming storyTitles-Array");
+                            Log.e(TAG, "Error while forming storyTitles-Array");
                         }
                         Log.d("Load json", "gameTitles successfully loaded for story " + s);
                     }
@@ -67,33 +68,34 @@ public class LoadAdventureData {
             return gameTitles;
         } catch (IOException e) {
             e.printStackTrace();
-            Log.e(TAG,"Error while parsing through story folders and gameInfo files");
+            Log.e(TAG, "Error while parsing through story folders and gameInfo files");
         }
 
         return new ArrayList<>();
     }
+
     public ArrayList<String> GetStoryInfo(Context context, String story) {
         story = story.replaceAll("[^a-zA-Z\\d.\\-]", "_");
         TAG = "loadTitles";
         mAssetManager = context.getAssets();
         mContext = context;
-        ArrayList<String>gameInfo = new ArrayList<>();
+        ArrayList<String> gameInfo = new ArrayList<>();
         try {
             String[] fileList = mAssetManager.list("Text Adventures");
             int indexOfStory = -1;
-            for (int i = 0; i<fileList.length; i++) {
+            for (int i = 0; i < fileList.length; i++) {
                 if (fileList[i].equals(story)) {
                     indexOfStory = i;
                 }
             }
-            if (indexOfStory==-1){
+            if (indexOfStory == -1) {
                 //Add error messages to other file and reference the variable names instead
-                Log.e(TAG,"Story: " + story + " was not found");
+                Log.e(TAG, "Story: " + story + " was not found");
                 gameInfo.add("Error gameInfo not found");
 
                 return gameInfo;
             } else {
-                String[] storyFileList = mAssetManager.list("Text Adventures/"+fileList[indexOfStory]);
+                String[] storyFileList = mAssetManager.list("Text Adventures/" + fileList[indexOfStory]);
                 for (String s : storyFileList) {
                     String path = "Text Adventures/" + fileList[indexOfStory] + "/" + s;
 
@@ -134,18 +136,18 @@ public class LoadAdventureData {
             String[] fileList = mAssetManager.list("Text Adventures");
             //CHANGE TO int i = 0
             int indexOfStory = -1;
-            for (int i = 0; i<fileList.length; i++) {
+            for (int i = 0; i < fileList.length; i++) {
                 if (fileList[i].equals(story)) {
                     indexOfStory = i;
                 }
             }
-            if (indexOfStory==-1){
+            if (indexOfStory == -1) {
                 //Add error messages to other file and reference the variable names instead
-                Log.e(TAG,"Story: " + story + " was not found");
+                Log.e(TAG, "Story: " + story + " was not found");
                 returnDefault.add("Error story not found");
                 return returnDefault;
             } else {
-                String[] storyFileList = mAssetManager.list("Text Adventures/"+fileList[indexOfStory]);
+                String[] storyFileList = mAssetManager.list("Text Adventures/" + fileList[indexOfStory]);
                 for (String s : storyFileList) {
                     String path = "Text Adventures/" + fileList[indexOfStory] + "/" + s;
 
@@ -185,6 +187,7 @@ public class LoadAdventureData {
 
         return new ArrayList<>();
     }
+
     public ArrayList<String> GetStoryChoices(Context context, String story, String page) {
         story = story.replaceAll("[^a-zA-Z\\d.\\-]", "_");
         TAG = "LoadStory";
@@ -195,18 +198,18 @@ public class LoadAdventureData {
             String[] fileList = mAssetManager.list("Text Adventures");
             //CHANGE TO int i = 0
             int indexOfStory = -1;
-            for (int i = 0; i<fileList.length; i++) {
+            for (int i = 0; i < fileList.length; i++) {
                 if (fileList[i].toString().equals(story)) {
                     indexOfStory = i;
                 }
             }
-            if (indexOfStory==-1){
+            if (indexOfStory == -1) {
                 //Add error messages to other file and reference the variable names instead
-                Log.e(TAG,"Story: " + story + " was not found");
+                Log.e(TAG, "Story: " + story + " was not found");
                 returnDefault.add("Error story not found");
                 return returnDefault;
             } else {
-                String[] storyFileList = mAssetManager.list("Text Adventures/"+fileList[indexOfStory]);
+                String[] storyFileList = mAssetManager.list("Text Adventures/" + fileList[indexOfStory]);
                 for (String s : storyFileList) {
                     String path = "Text Adventures/" + fileList[indexOfStory] + "/" + s;
 
@@ -245,6 +248,7 @@ public class LoadAdventureData {
         returnDefault.add("Error story not found");
         return new ArrayList<>();
     }
+
     public String GetStoryText(Context context, String story, String page) {
         story = story.replaceAll("[^a-zA-Z\\d.\\-]", "_");
         TAG = "LoadStory";
@@ -255,18 +259,18 @@ public class LoadAdventureData {
             String[] fileList = mAssetManager.list("Text Adventures");
             //CHANGE TO int i = 0
             int indexOfStory = -1;
-            for (int i = 0; i<fileList.length; i++) {
+            for (int i = 0; i < fileList.length; i++) {
                 if (fileList[i].toString().equals(story)) {
                     indexOfStory = i;
                 }
             }
 
-            if (indexOfStory==-1){
+            if (indexOfStory == -1) {
                 //Add error messages to other file and reference the variable names instead
-                Log.e(TAG,"Story: " + story + " was not found");
+                Log.e(TAG, "Story: " + story + " was not found");
                 return "ERROR: STORY NOT FOUND!";
             } else {
-                String[] storyFileList = mAssetManager.list("Text Adventures/"+fileList[indexOfStory]);
+                String[] storyFileList = mAssetManager.list("Text Adventures/" + fileList[indexOfStory]);
                 for (String s : storyFileList) {
                     String path = "Text Adventures/" + fileList[indexOfStory] + "/" + s;
 
@@ -319,18 +323,18 @@ public class LoadAdventureData {
             String[] fileList = mAssetManager.list("Text Adventures");
             //CHANGE TO int i = 0
             int indexOfStory = -1;
-            for (int i = 0; i<fileList.length; i++) {
+            for (int i = 0; i < fileList.length; i++) {
                 if (fileList[i].toString().equals(story)) {
                     indexOfStory = i;
                 }
             }
-            if (indexOfStory==-1){
+            if (indexOfStory == -1) {
                 //Add error messages to other file and reference the variable names instead
-                Log.e(TAG,"Story: " + story + " was not found");
+                Log.e(TAG, "Story: " + story + " was not found");
                 return "ERROR: STORY NOT FOUND!";
 
             } else {
-                String[] storyFileList = mAssetManager.list("Text Adventures/"+fileList[indexOfStory]);
+                String[] storyFileList = mAssetManager.list("Text Adventures/" + fileList[indexOfStory]);
                 for (String s : storyFileList) {
                     String path = "Text Adventures/" + fileList[indexOfStory] + "/" + s;
 
@@ -389,7 +393,7 @@ public class LoadAdventureData {
 
         } catch (IOException ex) {
             ex.printStackTrace();
-            Log.e("loadJSONFromAsset","Error while attempting to load a json file from " +
+            Log.e("loadJSONFromAsset", "Error while attempting to load a json file from " +
                     "path " + filepath);
             return "error";
         }

@@ -1,1 +1,223 @@
-{"page 33":["Spy on them","Direct approach"],"page 32":["Tell her the Freaks should change their allegiance","Leave"],"page 35":["But the real show begins aftterwards"],"page 34":["End Game and Leave Comments"],"page 37":["End Game and Leave Comments"],"page 39":["End Game and Leave Comments"],"page 71":["Talk to Sasha","Talk to Pervus"],"page 70":["Talk to Randal","Kill Randal"],"page 73":["End Game and Leave Comments"],"page 72":["But the real show begins afterwards"],"page 75":["End Game and Leave Comments"],"page 30":["End Game and Leave Comments"],"page 44":["End Game and Leave Comments"],"page 43":["Talk to Sasha","Talk to Pervus"],"page 45":["Convince Ajax with a story","Get Ajax to chase you"],"page 48":["But the real show begins afterwards"],"page 47":["End Game and Leave Comments"],"page 40":["Approach them","Go talk to the Normals"],"page 42":["Go talk to Salina","Go convince the Normals instead"],"page 6":["Back to Cast of Characters"],"page 19":["Because the real show occurs afterwards"],"page 5":["Back to Cast of Characters"],"page 18":["Try to convince her","Beg and plead pitifully"],"page 8":["Go see the Ring Master","Kick at Charley","Jog your damn memory to remember who the hell you even associate with (Cast of Characters)"],"page 7":["Back to Cast of Characters"],"page 2":["End Game and Leave Comments"],"page 1":["Obey the Ring Master","Get a drink","Do something else","Run away!"],"page 3":["Cast of Characters (The Main Event)","Cast of Characters (The Secondary Acts)","Cast of Characters (The Sideshows)","Back to the story"],"page 11":["Go see Pervus","Go see Salina"],"page 55":["Spy on them","Direct approach"],"page 10":["Go convince the Freaks","Go convince the Normals"],"page 54":["Talk even more","Go talk to the Normals"],"page 57":["Spy on them","Direct approach"],"page 12":["End Game and Leave Comments"],"page 56":["Continue to talk to them","Go talk to the Normals"],"page 15":["Cast of Characters (The Main Event)","Cast of Characters (The Secondary Acts)","Cast of Characters (The Sideshows)","Back to the story"],"page 59":["Spy on them","Direct approach"],"page 9":["Try to convince the Midgets","Try to convince the Normals"],"page 14":["Cast of Characters (The Main Event)","Cast of Characters (The Secondary Acts)","Cast of Characters (The Sideshows)","Back to the story"],"page 58":["Keep pushing it","Go talk to the Normals"],"page 17":["Continue with the plan","Change the plan"],"page 16":["Cast of Characters (The Main Event)","Cast of Characters (The Secondary Acts)","Cast of Characters (The Sideshows)","Back to the story"],"page 50":["End Game and Leave Comments"],"page 53":["Spy on them","Direct approach"],"page 52":["Talk some more","Go talk to the Normals"],"page 66":["But the real show begins afterwards"],"page 21":["End Game and Leave Comments"],"page 65":["End Game and Leave Comments"],"page 24":["End Game and Leave Comments"],"page 68":["End Game and Leave Comments"],"page 25":["Run out of the front entance of the tent","Crawl back out the way you came"],"page 28":["End Game and Leave Comments"],"page 27":["But the real show occurs afterwards"],"page 60":["Set the whole tent on fire","Enter the tent"],"page 62":["End Game and Leave Comments"],"page 61":["Spy on them","Direct approach"],"page 20":["End Game and Leave Comments"],"page 63":["Remove your foot and get out of there","Let him suck your toe"],"page 0":["Go see the Ring Master","Kick at Charley","Jog your damn memory to remember who the hell you even associate with (Cast of Characters)"]}
+{
+  "page 33": [
+    "Spy on them",
+    "Direct approach"
+  ],
+  "page 32": [
+    "Tell her the Freaks should change their allegiance",
+    "Leave"
+  ],
+  "page 35": [
+    "But the real show begins aftterwards"
+  ],
+  "page 34": [
+    "End Game and Leave Comments"
+  ],
+  "page 37": [
+    "End Game and Leave Comments"
+  ],
+  "page 39": [
+    "End Game and Leave Comments"
+  ],
+  "page 71": [
+    "Talk to Sasha",
+    "Talk to Pervus"
+  ],
+  "page 70": [
+    "Talk to Randal",
+    "Kill Randal"
+  ],
+  "page 73": [
+    "End Game and Leave Comments"
+  ],
+  "page 72": [
+    "But the real show begins afterwards"
+  ],
+  "page 75": [
+    "End Game and Leave Comments"
+  ],
+  "page 30": [
+    "End Game and Leave Comments"
+  ],
+  "page 44": [
+    "End Game and Leave Comments"
+  ],
+  "page 43": [
+    "Talk to Sasha",
+    "Talk to Pervus"
+  ],
+  "page 45": [
+    "Convince Ajax with a story",
+    "Get Ajax to chase you"
+  ],
+  "page 48": [
+    "But the real show begins afterwards"
+  ],
+  "page 47": [
+    "End Game and Leave Comments"
+  ],
+  "page 40": [
+    "Approach them",
+    "Go talk to the Normals"
+  ],
+  "page 42": [
+    "Go talk to Salina",
+    "Go convince the Normals instead"
+  ],
+  "page 6": [
+    "Back to Cast of Characters"
+  ],
+  "page 19": [
+    "Because the real show occurs afterwards"
+  ],
+  "page 5": [
+    "Back to Cast of Characters"
+  ],
+  "page 18": [
+    "Try to convince her",
+    "Beg and plead pitifully"
+  ],
+  "page 8": [
+    "Go see the Ring Master",
+    "Kick at Charley",
+    "Jog your damn memory to remember who the hell you even associate with (Cast of Characters)"
+  ],
+  "page 7": [
+    "Back to Cast of Characters"
+  ],
+  "page 2": [
+    "End Game and Leave Comments"
+  ],
+  "page 1": [
+    "Obey the Ring Master",
+    "Get a drink",
+    "Do something else",
+    "Run away!"
+  ],
+  "page 3": [
+    "Cast of Characters (The Main Event)",
+    "Cast of Characters (The Secondary Acts)",
+    "Cast of Characters (The Sideshows)",
+    "Back to the story"
+  ],
+  "page 11": [
+    "Go see Pervus",
+    "Go see Salina"
+  ],
+  "page 55": [
+    "Spy on them",
+    "Direct approach"
+  ],
+  "page 10": [
+    "Go convince the Freaks",
+    "Go convince the Normals"
+  ],
+  "page 54": [
+    "Talk even more",
+    "Go talk to the Normals"
+  ],
+  "page 57": [
+    "Spy on them",
+    "Direct approach"
+  ],
+  "page 12": [
+    "End Game and Leave Comments"
+  ],
+  "page 56": [
+    "Continue to talk to them",
+    "Go talk to the Normals"
+  ],
+  "page 15": [
+    "Cast of Characters (The Main Event)",
+    "Cast of Characters (The Secondary Acts)",
+    "Cast of Characters (The Sideshows)",
+    "Back to the story"
+  ],
+  "page 59": [
+    "Spy on them",
+    "Direct approach"
+  ],
+  "page 9": [
+    "Try to convince the Midgets",
+    "Try to convince the Normals"
+  ],
+  "page 14": [
+    "Cast of Characters (The Main Event)",
+    "Cast of Characters (The Secondary Acts)",
+    "Cast of Characters (The Sideshows)",
+    "Back to the story"
+  ],
+  "page 58": [
+    "Keep pushing it",
+    "Go talk to the Normals"
+  ],
+  "page 17": [
+    "Continue with the plan",
+    "Change the plan"
+  ],
+  "page 16": [
+    "Cast of Characters (The Main Event)",
+    "Cast of Characters (The Secondary Acts)",
+    "Cast of Characters (The Sideshows)",
+    "Back to the story"
+  ],
+  "page 50": [
+    "End Game and Leave Comments"
+  ],
+  "page 53": [
+    "Spy on them",
+    "Direct approach"
+  ],
+  "page 52": [
+    "Talk some more",
+    "Go talk to the Normals"
+  ],
+  "page 66": [
+    "But the real show begins afterwards"
+  ],
+  "page 21": [
+    "End Game and Leave Comments"
+  ],
+  "page 65": [
+    "End Game and Leave Comments"
+  ],
+  "page 24": [
+    "End Game and Leave Comments"
+  ],
+  "page 68": [
+    "End Game and Leave Comments"
+  ],
+  "page 25": [
+    "Run out of the front entance of the tent",
+    "Crawl back out the way you came"
+  ],
+  "page 28": [
+    "End Game and Leave Comments"
+  ],
+  "page 27": [
+    "But the real show occurs afterwards"
+  ],
+  "page 60": [
+    "Set the whole tent on fire",
+    "Enter the tent"
+  ],
+  "page 62": [
+    "End Game and Leave Comments"
+  ],
+  "page 61": [
+    "Spy on them",
+    "Direct approach"
+  ],
+  "page 20": [
+    "End Game and Leave Comments"
+  ],
+  "page 63": [
+    "Remove your foot and get out of there",
+    "Let him suck your toe"
+  ],
+  "page 0": [
+    "Go see the Ring Master",
+    "Kick at Charley",
+    "Jog your damn memory to remember who the hell you even associate with (Cast of Characters)"
+  ]
+}

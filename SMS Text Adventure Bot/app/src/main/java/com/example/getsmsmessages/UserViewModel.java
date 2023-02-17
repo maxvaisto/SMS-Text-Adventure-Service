@@ -3,7 +3,7 @@ package com.example.getsmsmessages;
 
 import android.app.Application;
 import android.content.IntentFilter;
-import android.util.Log;
+
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -18,13 +18,11 @@ import java.util.List;
  */
 public class UserViewModel extends AndroidViewModel {
 
-    public UserRepository mUserRepository;
-
-    //Unused
-    private LiveData<List<String>> mAllPhoneNumbers;
-
     //App handle
     private static Application mApplication;
+    public UserRepository mUserRepository;
+    //Unused
+    private LiveData<List<String>> mAllPhoneNumbers;
     private MutableLiveData<List<String>> mMutableMessage;
 
     //On creation create sms receiver (and register this), create new user user repo and
@@ -44,7 +42,7 @@ public class UserViewModel extends AndroidViewModel {
     }
 
     //Used to return the application handle
-    public Application getApplication(){
+    public Application getApplication() {
         return mApplication;
     }
 
@@ -53,11 +51,13 @@ public class UserViewModel extends AndroidViewModel {
      */
 
     //Used to collect all of the phone numbers currently in the database
-    LiveData<List<String>> getAllPhoneNumbers() { return mAllPhoneNumbers; }
+    LiveData<List<String>> getAllPhoneNumbers() {
+        return mAllPhoneNumbers;
+    }
 
     //Used to insert a user manually
-    public void insertUser(String userPhone, ArrayList<String> userPreviousGames){
-        mUserRepository.insertUser(userPhone,userPreviousGames);
+    public void insertUser(String userPhone, ArrayList<String> userPreviousGames) {
+        mUserRepository.insertUser(userPhone, userPreviousGames);
     }
 
     //Used to get user previous game manually

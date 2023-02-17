@@ -6,25 +6,12 @@ import static com.example.getsmsmessages.Constants.KEY_PURPOSE_URI;
 import static com.example.getsmsmessages.Constants.KEY_RETURN_MESSAGE_URI;
 import static com.example.getsmsmessages.Constants.KEY_SENDER_URI;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.work.Data;
-import androidx.work.OneTimeWorkRequest;
-import androidx.work.WorkInfo;
-import androidx.work.WorkManager;
-
 import android.Manifest;
 import android.app.AlertDialog;
 import android.app.Application;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -34,10 +21,16 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.work.Data;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkInfo;
+import androidx.work.WorkManager;
 
 /*
     THIS FUNCTION IS USED TO FOR THE UI AND APP PERMISSIONS
@@ -50,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     final String[] PERMISSIONS = {
             Manifest.permission.RECEIVE_SMS,
             Manifest.permission.SEND_SMS
-        };
+    };
 
     private UserViewModel mUserViewModel;
     private TextView mPhoneNumberText;
@@ -59,20 +52,26 @@ public class MainActivity extends AppCompatActivity {
     private Button mButton;
     private TextView mSentSMSMessage;
     private AlertDialog.Builder builder;
+
+    //Get main windows context
+    public static Context giveContext() {
+        return context;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = getApplicationContext();
         Application application = getApplication();
         setContentView(R.layout.activity_main);
-        mPhoneNumberText = (TextView)findViewById(R.id.phoneNumberText);
-        mMessageText = (TextView)findViewById(R.id.SMSText);
-        mSentSMSMessage = (TextView)findViewById(R.id.SentSMSMessage);
+        mPhoneNumberText = (TextView) findViewById(R.id.phoneNumberText);
+        mMessageText = (TextView) findViewById(R.id.SMSText);
+        mSentSMSMessage = (TextView) findViewById(R.id.SentSMSMessage);
         mButton = findViewById(R.id.button);
 
         //GET PERMISSIONS FROM THE USER
         if (ContextCompat.checkSelfPermission(MainActivity.this,
-                Manifest.permission.SEND_SMS)  +
+                Manifest.permission.SEND_SMS) +
                 ContextCompat.checkSelfPermission(MainActivity.this,
                         Manifest.permission.RECEIVE_SMS) +
                 ContextCompat.checkSelfPermission(MainActivity.this,
@@ -80,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                 != PackageManager.PERMISSION_GRANTED) {
 
             ActivityCompat.requestPermissions(
-                    MainActivity.this, new String[] {
+                    MainActivity.this, new String[]{
                             Manifest.permission.SEND_SMS,
                             Manifest.permission.RECEIVE_SMS,
                             Manifest.permission.READ_SMS
@@ -99,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
                 String sender = mPhoneNumberText.getText().toString();
                 String message = mMessageText.getText().toString();
                 //Setting message manually and performing action on button click
-                builder.setMessage("Do you want to insert command "+ message + " from number " +
+                builder.setMessage("Do you want to insert command " + message + " from number " +
                                 sender + "?")
                         .setCancelable(false)
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -152,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
                         public void onChanged(@Nullable WorkInfo workInfo) {
                             if (workInfo != null) {
                                 Log.d(TAG, "WorkInfo received: state: " + workInfo.getState());
-                                if (workInfo.getState().equals(SUCCEEDED)){
+                                if (workInfo.getState().equals(SUCCEEDED)) {
                                     String message = workInfo.getOutputData().getString(KEY_RETURN_MESSAGE_URI);
                                     Log.d(TAG, "Message sent!");
                                     mSentSMSMessage.setText(message);
@@ -168,12 +167,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-
-    //Get main windows context
-    public static Context giveContext(){
-        return context;
-    }
-
 
     //Create the options menu
     @Override

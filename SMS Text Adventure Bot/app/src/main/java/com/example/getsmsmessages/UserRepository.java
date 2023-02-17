@@ -2,7 +2,9 @@ package com.example.getsmsmessages;
 
 import android.app.Application;
 import android.util.Log;
+
 import androidx.lifecycle.LiveData;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,18 +37,18 @@ public class UserRepository {
     }
 
     //Add a new user
-    public void insertUser(String userPhone, ArrayList<String> userPreviousGame){
-        User userInfo = new User(userPhone,userPreviousGame);
+    public void insertUser(String userPhone, ArrayList<String> userPreviousGame) {
+        User userInfo = new User(userPhone, userPreviousGame);
         MyRoomDatabase.databaseWriteExecutor.execute(() -> mUserDao.insertUser(userInfo));
 
     }
 
     //Ge the previous game file
-    public ArrayList<String> getUserPreviousGame(String userPhone){
+    public ArrayList<String> getUserPreviousGame(String userPhone) {
         //Fetch user games from the DAO
         List<User> userList = mUserDao.getPreviousGames(userPhone);
         if (!userList.isEmpty()) {
-            if (!userList.get(0).getPreviousGames().isEmpty()){
+            if (!userList.get(0).getPreviousGames().isEmpty()) {
                 return userList.get(0).getPreviousGames();
             }
 
@@ -56,21 +58,21 @@ public class UserRepository {
     }
 
     //Insert the new game state
-    public void insertUserGame(String userPhone, String game, ArrayList<String> userGameProgress){
-        GameSave userGameSave = new GameSave(userPhone,game,userGameProgress);
+    public void insertUserGame(String userPhone, String game, ArrayList<String> userGameProgress) {
+        GameSave userGameSave = new GameSave(userPhone, game, userGameProgress);
         MyRoomDatabase.databaseWriteExecutor.execute(() -> mUserDao.insertGame(userGameSave));
 
     }
 
-    public ArrayList<String> getUserGameProgress(String userPhone, String game){
+    public ArrayList<String> getUserGameProgress(String userPhone, String game) {
         //Fetch user game progress from the DAO
-        List<GameSave> userGameSave = mUserDao.getProgress(userPhone,game);
+        List<GameSave> userGameSave = mUserDao.getProgress(userPhone, game);
         if (!userGameSave.isEmpty()) {
-            if (!userGameSave.get(0).getGameProgress().isEmpty()){
+            if (!userGameSave.get(0).getGameProgress().isEmpty()) {
                 return userGameSave.get(0).getGameProgress();
-            }else {
+            } else {
                 Log.d("UserRepository", "Empty gameProgress for user " + userPhone
-                + " in game " + game);
+                        + " in game " + game);
             }
 
         } else {
@@ -80,7 +82,7 @@ public class UserRepository {
         return new ArrayList<>();
     }
 
-    public void deleteUser(String userPhone){
+    public void deleteUser(String userPhone) {
         MyRoomDatabase.databaseWriteExecutor.execute(() -> mUserDao.deleteUser(userPhone));
 
     }
@@ -88,31 +90,30 @@ public class UserRepository {
     /*
         BELOW UNIMPLEMENTED BUT USEFUL COMMANDS
      */
-    public void deleteUserGameSave(String userPhone, String game){
-        MyRoomDatabase.databaseWriteExecutor.execute(() -> mUserDao.deleteUserGame(userPhone,game));
+    public void deleteUserGameSave(String userPhone, String game) {
+        MyRoomDatabase.databaseWriteExecutor.execute(() -> mUserDao.deleteUserGame(userPhone, game));
 
     }
 
 
-
-    public void deleteAllUsers(){
+    public void deleteAllUsers() {
         MyRoomDatabase.databaseWriteExecutor.execute(() -> mUserDao.deleteAllUsers());
 
     }
 
-    public void deleteAllGamesOfAllUsers(){
+    public void deleteAllGamesOfAllUsers() {
         MyRoomDatabase.databaseWriteExecutor.execute(() -> mUserDao.deleteAllUserGamesForAllUsers());
 
     }
 
-    public void deleteAllGamesOfUser(String userPhone){
+    public void deleteAllGamesOfUser(String userPhone) {
         MyRoomDatabase.databaseWriteExecutor.execute(() -> mUserDao.deleteAllGamesOfUser(userPhone));
 
     }
 
 
-    public void deleteUserGame(String userPhone, String game){
-        MyRoomDatabase.databaseWriteExecutor.execute(() -> mUserDao.deleteUserGame(userPhone,game));
+    public void deleteUserGame(String userPhone, String game) {
+        MyRoomDatabase.databaseWriteExecutor.execute(() -> mUserDao.deleteUserGame(userPhone, game));
 
     }
     /*
